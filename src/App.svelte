@@ -44,7 +44,7 @@
 	class:theme-orange={$user.theme === "orange"}
 	class:theme-blue={$user.theme === "blue"}
 	class:theme-purple={$user.theme === "purple"}
-	class:theme-green={$user.theme === "yellow"}
+	class:theme-green={$user.theme === "green"}
 	class:theme-red={$user.theme === "red"}
 	class:mode-light={!($user.mode === false)}
 	class:mode-dark={$user.mode === false}
@@ -224,7 +224,7 @@
 		--foreground: white;
 		--foreground-orange: white;
 	}
-	/* um, actually its yelow*/
+	
 	#main.theme-green {
 		--orange: #5ed442 !IMPORTANT;
         --orange-light: #6ce16f !IMPORTANT;
