@@ -1,5 +1,6 @@
 <!-- You probably know what this is. -->
 <script>
+	const themes = ["orange", "blue", "a", "b", "c"];
 	import Container from "../lib/Container.svelte";
 
 	import {user, modalShown, modalPage} from "../lib/stores.js";
@@ -59,7 +60,7 @@
 			class="circle settings"
 			on:click={() => {
 				const _user = $user;
-				_user.theme = _user.theme === "orange" ? "blue" ?? "orange" ?? "purple" : "green";
+				_user.theme = themes[((themes.indexOf(_user.theme) ?? -1) + 1) % themes.length]
 				user.set(_user);
 
 				clm.updateProfile();
