@@ -45,6 +45,7 @@
 	class:theme-blue={$user.theme === "blue"}
 	class:theme-purple={$user.theme === "purple"}
 	class:theme-green={$user.theme === "yellow"}
+	class:theme-red={$user.theme === "red"}
 	class:mode-light={!($user.mode === false)}
 	class:mode-dark={$user.mode === false}
 	class:layout-old={$user.layout === "old"}
@@ -223,7 +224,8 @@
 		--foreground: white;
 		--foreground-orange: white;
 	}
-	#main.green-purple {
+	/* um, actually its yelow*/
+	#main.theme-green {
 		--orange: #5ed442 !IMPORTANT;
         --orange-light: #6ce16f !IMPORTANT;
         --orange-dark: #40bb2e !IMPORTANT;
@@ -235,6 +237,23 @@
     scrollbar-color: unset;
 	}
 	#main.theme-green.mode-dark {
+		--background: #202020;
+		--foreground: white;
+		--foreground-orange: white;
+	}
+	
+	#main.theme-red {
+    --orange: #ff4d4d !IMPORTANT;
+    --orange-light: #ff7979 !IMPORTANT;
+    --orange-dark: #eb3636 !IMPORTANT;
+    --orange-button: var(--orange);
+    --orange-scrollbar-back: #b13737 !IMPORTANT;
+    --background: white;
+    --foreground: black;
+    --foreground-orange: white;
+    scrollbar-color: unset;
+	}
+	#main.theme-red.mode-dark {
 		--background: #202020;
 		--foreground: white;
 		--foreground-orange: white;
