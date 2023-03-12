@@ -1,7 +1,7 @@
 <!-- You probably know what this is. -->
 <script>
 	const themes = ["orange", "blue", "purple", "green", "red"];
-	const fonts = ["orange", "blue", "purple", "green", "red"];
+	const fonts = ["default", "monospace"];
 	import Container from "../lib/Container.svelte";
 
 	import {user, modalShown, modalPage} from "../lib/stores.js";
