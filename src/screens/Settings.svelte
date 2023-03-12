@@ -1,6 +1,6 @@
 <!-- You probably know what this is. -->
 <script>
-	const themes = ["orange", "blue", "purple", "yellow", "red"];
+	const themes = ["orange", "blue", "purple", "green", "red"];
 	import Container from "../lib/Container.svelte";
 
 	import {user, modalShown, modalPage} from "../lib/stores.js";
