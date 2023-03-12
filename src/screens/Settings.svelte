@@ -1,6 +1,7 @@
 <!-- You probably know what this is. -->
 <script>
 	const themes = ["orange", "blue", "purple", "green", "red"];
+	const fonts = ["orange", "blue", "purple", "green", "red"];
 	import Container from "../lib/Container.svelte";
 
 	import {user, modalShown, modalPage} from "../lib/stores.js";
@@ -70,6 +71,23 @@
 
 	<h2>Theme</h2>
 	The theme is currently set to {$user.theme}.
+</Container>
+<Container>
+	<div class="settings-controls">
+		<button
+			class="circle settings"
+			on:click={() => {
+				const _user = $user;
+				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
+				user.set(_user);
+
+				clm.updateProfile();
+			}}
+		/>
+	</div>
+
+	<h2>Font</h2>
+	The font is currently set to {$user.font}.
 </Container>
 <Container>
 	<div class="settings-controls">
