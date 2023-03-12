@@ -41,7 +41,7 @@
 
 <main
 	id="main"
-	class:font-undefined={$user.font === "undefined"}
+	class:font-undefined={$user.font == "undefined"}
 	class:font-mono={$user.font === "monospace"}
 	class:font-default={$user.font === "default"}
 	class:theme-orange={$user.theme === "orange"}
