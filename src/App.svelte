@@ -41,6 +41,7 @@
 
 <main
 	id="main"
+	class:font-default={$user.font === "default"}
 	class:theme-orange={$user.theme === "orange"}
 	class:theme-blue={$user.theme === "blue"}
 	class:theme-purple={$user.theme === "purple"}
@@ -157,11 +158,12 @@
 		z-index: 10000;
 	}
 
+	#main.font-default {
+		font-family: Simvoni, sans-serif;
+	}
 	#main {
 		width: 100%;
 		height: 100%;
-
-		font-family: Simvoni, sans-serif;
 
 		--orange: #f9a636;
 		--orange-button: var(--orange);
