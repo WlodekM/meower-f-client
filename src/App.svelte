@@ -43,6 +43,8 @@
 	id="main"
 	class:theme-orange={$user.theme === "orange"}
 	class:theme-blue={$user.theme === "blue"}
+	class:theme-purple={$user.theme === "purple"}
+	class:theme-green={$user.theme === "green"}
 	class:mode-light={!($user.mode === false)}
 	class:mode-dark={$user.mode === false}
 	class:layout-old={$user.layout === "old"}
@@ -207,20 +209,32 @@
 		--foreground-orange: white;
 	}
 	#main.theme-purple {
-		/*--orange: #aa0000;
-		--orange-light: #aa0000;
-		--orange-dark: #aa0000;
-		--orange-scrollbar-back: #aa0000;*/
-		--orange: #4d97ff;
-		--orange-light: #79b7ff;
-		--orange-dark: #3685eb;
-		--orange-scrollbar-back: #374eb1;
-		--background: white;
-		--foreground: black;
-		--foreground-orange: white;
-		scrollbar-color: unset;
+    --orange: #984dff ;
+    --orange-light: #c179ff ;
+    --orange-dark: #7236eb ;
+    --orange-scrollbar-back: #7237b1;
+    --background: white;
+    --foreground: black;
+    --foreground-orange: white;
+    scrollbar-color: unset;
 	}
 	#main.theme-purple.mode-dark {
+		--background: #202020;
+		--foreground: white;
+		--foreground-orange: white;
+	}
+	#main.green-purple {
+		--orange: #5ed442 !IMPORTANT;
+        --orange-light: #6ce16f !IMPORTANT;
+        --orange-dark: #40bb2e !IMPORTANT;
+        --orange-button: var(--orange);
+        --orange-scrollbar-back: #2a832c !IMPORTANT;
+    --background: white;
+    --foreground: black;
+    --foreground-orange: white;
+    scrollbar-color: unset;
+	}
+	#main.theme-green.mode-dark {
 		--background: #202020;
 		--foreground: white;
 		--foreground-orange: white;
