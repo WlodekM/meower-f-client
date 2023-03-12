@@ -41,6 +41,7 @@
 
 <main
 	id="main"
+	class:font-undefined={$user.font === "undefined"}
 	class:font-mono={$user.font === "monospace"}
 	class:font-default={$user.font === "default"}
 	class:theme-orange={$user.theme === "orange"}
@@ -159,6 +160,9 @@
 		z-index: 10000;
 	}
 
+	#main.font-undefined {
+		font-family: Simvoni, sans-serif;
+	}
 	#main.font-default {
 		font-family: Simvoni, sans-serif;
 	}
