@@ -41,6 +41,8 @@
 
 <main
 	id="main"
+	class:font-default={$user.font === "undefined"}
+	class:font-mono={$user.font === "monospace"}
 	class:font-default={$user.font === "default"}
 	class:theme-orange={$user.theme === "orange"}
 	class:theme-blue={$user.theme === "blue"}
@@ -161,6 +163,10 @@
 	#main.font-default {
 		font-family: Simvoni, sans-serif;
 	}
+	#main.font-mono {
+		font-family: monospace;
+	}
+	
 	#main {
 		width: 100%;
 		height: 100%;
