@@ -6,6 +6,12 @@
 
 	import {user, modalShown, modalPage} from "../lib/stores.js";
 	import * as clm from "../lib/clmanager.js";
+	function StoreFont(fonttostore) {
+		localStorage.setItem('font', fonttostore)
+	}
+	function GetFont() {
+		return(localStorage('font'))
+	}
 </script>
 
 <!--
@@ -77,11 +83,7 @@
 		<button
 			class="circle settings"
 			on:click={() => {
-				const _user = $user;
-				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
-				user.set(_user);
-
-				clm.updateProfile();
+				StoreFont(fonts[((fonts.indexOf(GetFont()) ?? -1) + 1) % fonts.length])
 			}}
 		/>
 	</div>
