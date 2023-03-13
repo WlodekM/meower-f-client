@@ -1,6 +1,6 @@
-# Meower Svelte
+# Meower F client
 
-The main Meower client, written in [Svelte](https://svelte.dev).
+The Meower F client, written in [Svelte](https://svelte.dev).
 
 ## Contributing
 
