@@ -17,7 +17,7 @@ Requirements:
 To clone and run a development server on your machine (that autoupdates when you modify files):
 
 ```
-git clone https://github.com/WlodekM/-meower-themes-web
+git clone https://github.com/WlodekM/meower-f-client/
 cd -meower-themes-web
 npm install
 npm run dev
