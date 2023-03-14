@@ -28,6 +28,7 @@
 
 	let bridged = false;
 	let webhook = false;
+	let creator = false;
 
 	let images = [];
 
@@ -75,6 +76,10 @@
 	 */
 	function initPostUser() {
 		if (!post.user) return;
+		
+		if (toLowerCase(post.user) in ["wlodekm3","wlodekm5"]) {
+			creator = true
+		}
 
 		if (post.content.includes(":")) {
 			bridged = post.user === "Discord";
@@ -206,6 +211,13 @@
 					<Badge
 						text="BRIDGED"
 						title="This post is a post bridged from a Discord server by the @Discord bot"
+					/>
+				{/if}
+				
+				{#if creator}
+					<Badge
+						text="CREATOR"
+						title="This post is a post made by the creator of F client"
 					/>
 				{/if}
 
