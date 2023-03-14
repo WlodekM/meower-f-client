@@ -77,7 +77,8 @@
 	function initPostUser() {
 		if (!post.user) return;
 		
-		if (post.user.toLowerCase() in ["wlodekm3","wlodekm5"]) {
+		let pst_auth = post.user;
+		if (pst_auth.toLowerCase() in ["wlodekm3","wlodekm5"]) {
 			creator = true
 		}
 
