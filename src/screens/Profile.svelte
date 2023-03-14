@@ -20,7 +20,7 @@
 
 	import {tick} from "svelte";
 
-	const PFP_COUNT = 35;
+	const PFP_COUNT = 36;
 
 	const pfps = new Array(PFP_COUNT).fill().map((_, i) => i + 1);
 	pfps.push(-1, 500, 101, 102) //add secret pfps
