@@ -23,6 +23,7 @@
 	const PFP_COUNT = 34;
 
 	const pfps = new Array(PFP_COUNT).fill().map((_, i) => i + 1);
+	pfps.push(-1, 500, 101, 102) //add secret pfps
 	let pfpSwitcher = false;
 
 	async function loadProfile() {
@@ -52,7 +53,8 @@
 	let pfpOverflow = false;
 	$: {
 		const pfp = $user.pfp_data;
-		pfpOverflow = pfp < 0 || pfp > PFP_COUNT;
+		let hiddenpfps = [-1, 500, 101, 102]
+		pfpOverflow = pfp < 0 || pfp > PFP_COUNT && !(hiddenpfps.includes(pfp));
 	}
 </script>
 
