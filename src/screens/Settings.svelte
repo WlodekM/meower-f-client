@@ -174,8 +174,23 @@
 		</div>
 
 		<h2>Delete Account</h2>
-		Permanently delete your Meower account. THIS CANNOT BE UNDONE.
+			Permanently delete your Meower account. <span style="color:red;">THIS CANNOT BE UNDONE.</span>
 	</Container>
+	<Container>
+		<div class="settings-controls">
+			<button
+				class="circle settings"
+				on:click={() => {
+					modalPage.set("logout");
+					modalShown.set(true);
+				}}
+			/>
+		</div>
+
+		<h2>Log out</h2>
+		Log out of your account
+	</Container>
+		
 {/if}
 
 <!--
