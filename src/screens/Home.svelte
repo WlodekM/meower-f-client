@@ -340,7 +340,7 @@
 		</div>
 	{:catch error}
 		<Container>
-			<h1>Home</h1>
+			<h1>F client home</h1>
 			Error loading posts. Please try again.
 			<pre><code>{error}</code></pre>
 		</Container>
