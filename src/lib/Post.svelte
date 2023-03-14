@@ -77,7 +77,7 @@
 	function initPostUser() {
 		if (!post.user) return;
 		
-		if (toLowerCase(post.user) in ["wlodekm3","wlodekm5"]) {
+		if (post.user.toLowerCase() in ["wlodekm3","wlodekm5"]) {
 			creator = true
 		}
 
