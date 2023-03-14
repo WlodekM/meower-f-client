@@ -208,17 +208,17 @@
 					{post.user}
 				</h2>
 
-				{#if bridged}
-					<Badge
-						text="BRIDGED"
-						title="This post is a post bridged from a Discord server by the @Discord bot"
-					/>
-				{/if}
-				
 				{#if creator}
 					<Badge
 						text="CREATOR"
 						title="This post is a post made by the creator of F client"
+					/>
+				{/if}
+				
+				{#if bridged}
+					<Badge
+						text="BRIDGED"
+						title="This post is a post bridged from a Discord server by the @Discord bot"
 					/>
 				{/if}
 
