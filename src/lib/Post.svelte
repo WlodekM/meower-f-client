@@ -78,7 +78,7 @@
 		if (!post.user) return;
 		
 		let pst_auth = post.user;
-		if (["wlodekm3","wlodekm5"]includes(pst_auth.toLowerCase())) {
+		if (["wlodekm3","wlodekm5"].includes(pst_auth.toLowerCase())) {
 			creator = true
 		}
 
