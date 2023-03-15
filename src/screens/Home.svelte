@@ -177,11 +177,7 @@
 	ulist.subscribe(val => {
 		_ulist = val;
 	});
-	if (!!$user.name) {
-		var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name)
-	} else {
-		var isdev = false
-	}
+	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name)
 </script>
 
 <div class="home">
