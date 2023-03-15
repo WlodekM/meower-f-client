@@ -356,6 +356,9 @@
 </Container>
 
 <style>
+	.post-content {
+		margin-top: 10px;
+	}
 	.pfp {
 		margin-right: 0.2em;
 		padding: 0;
