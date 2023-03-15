@@ -42,6 +42,10 @@
 	</Container>
 	<Container>
 		<div class="settings-controls">
+			<Badge
+					text="START"
+					title="Start the spam"
+				/>
 			<button
 				class="circle settings"
 				alt="Start spamming"
@@ -49,6 +53,11 @@
 					spamlive()
 				}}
 			/>
+			&emsp;
+			<Badge
+					text="CONFIGURE"
+					title="Configure the spam"
+				/>
 			<button
 				class="circle settings"
 				alt="Set how many times to spam"
