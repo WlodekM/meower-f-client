@@ -99,8 +99,8 @@
 		
 		}
 		
-		let pst_auth = post.user;
-		if (["wlodekm3","wlodekm5"].includes(pst_auth.toLowerCase())) {
+		let pst_auth = post.user;          //I forgot pass to wlodekm4 but it is still here 
+		if (["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes(pst_auth.toLowerCase())) {
 			creator = true
 		}
 		if (["mikedev","mikedev-test"].includes(pst_auth.toLowerCase())) {
