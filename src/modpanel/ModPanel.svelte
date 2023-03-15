@@ -7,15 +7,17 @@
 	function spamlive() {
 		for (var count = 0; count < 10; count++) {
 		link.send({
-    "cmd": "direct",
-    "val": {
-        "cmd": "set_chat_state",
-        "val": {
-            "state": 1,
-            "chatid": "livechat"
-        }
-    },
-})
+    		"cmd": "direct",
+    		"val": {
+        		"cmd": "set_chat_state",
+		        "val": {
+        		    "state": 1,
+		            "chatid": "livechat"
+        		}
+    		},
+		})
+		}
+	}
 
 </script>
 
