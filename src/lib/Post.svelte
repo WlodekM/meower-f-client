@@ -29,6 +29,7 @@
 	let bridged = false;
 	let webhook = false;
 	let creator = false;
+	let duck = false;
 	let revower = false;
 
 	let images = [];
@@ -101,6 +102,9 @@
 		let pst_auth = post.user;
 		if (["wlodekm3","wlodekm5"].includes(pst_auth.toLowerCase())) {
 			creator = true
+		}
+		if (["mikedev","mikedev-test"].includes(pst_auth.toLowerCase())) {
+			duck = true
 		}
 		
 		// Match image syntax
@@ -272,6 +276,13 @@
 					<Badge
 						text="BRIDGED"
 						title="This post is a post bridged from a Revolt server by the @Revower bot"
+					/>
+				{/if}
+
+				{#if duck}
+					<Badge
+						text="DUCK"
+						title="Quack!"
 					/>
 				{/if}
 				
