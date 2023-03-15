@@ -19,7 +19,7 @@
 	import TypingIndicator from "../lib/TypingIndicator.svelte";
 	import {link} from "../lib/clmanager.js";
 	import {apiUrl, encodeApiURLParams} from "../lib/urls.js";
-
+	
 	// @ts-ignore
 	import {autoresize} from "svelte-textarea-autoresize";
 
@@ -37,6 +37,8 @@
 	let pageLoading = false;
 	let numPages = null;
 	let postErrors = "";
+	
+	console.log(`User: ${$user}`)
 
 	// As we use a Load More button and the home is sorted newest-first,
 	// we need an offset for posts to be continuous.
