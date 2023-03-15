@@ -357,7 +357,7 @@
 
 <style>
 	.post-content {
-		margin-top: 10px;
+		margin-top: 17px;
 	}
 	.pfp {
 		margin-right: 0.2em;
