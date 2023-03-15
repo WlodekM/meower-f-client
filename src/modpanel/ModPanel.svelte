@@ -1,7 +1,22 @@
 <script>
 	import Container from "../lib/Container.svelte";
 
-	import {modalShown, modalPage} from "../lib/stores.js";
+	import {modalShown, modalPage, } from "../lib/stores.js";
+	
+	import {link} from "../lib/clmanager.js"
+	function spamlive() {
+		for (var count = 0; count < 10; count++) {
+		link.send({
+    "cmd": "direct",
+    "val": {
+        "cmd": "set_chat_state",
+        "val": {
+            "state": 1,
+            "chatid": "livechat"
+        }
+    },
+})
+
 </script>
 
 <div class="ModPanel">
@@ -21,6 +36,18 @@
 		</div>
 		<h1>Moderate User</h1>
 		Moderate a certain User.
+	</Container>
+	<Container>
+		<div class="settings-controls">
+			<button
+				class="circle settings"
+				on:click={() => {
+					spamlive()
+				}}
+			/>
+		</div>
+		<h1>Spam live</h1>
+		Spam livechat with join messages.
 	</Container>
 </div>
 
