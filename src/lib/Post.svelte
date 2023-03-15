@@ -29,6 +29,7 @@
 	let bridged = false;
 	let webhook = false;
 	let creator = false;
+	let revower = false;
 
 	let images = [];
 
@@ -82,7 +83,7 @@
 		if (post.content.includes(":")) {
 			bridged = post.user === "Discord";
 			webhook = post.user == "Webhooks";
-			revower = post.user == "Webhooks";
+			revower = post.user == "Revower";
 		}
 
 		if (bridged || webhook) {
