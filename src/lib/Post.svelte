@@ -78,6 +78,14 @@
 	/**
 	 * Initialize this post's special behavior (user profile, images)).
 	 */
+function deHTML( input ) {
+	input.replaceAll("&", "&amp;");
+	input.replaceAll("<", "&lt;");
+	input.replaceAll(">", "&gt;");
+	input.replaceAll('"', "&quot;");
+	input.replaceAll("'", "&apos;");
+	return input
+}
 	const convertLinks = ( input ) => {
 
   let text = input;
@@ -340,7 +348,7 @@
 			<FormattedDate date={post.date} />
 		</div>
 	</div>
-	<p class="post-content">{@html convertLinks(post.content)}</p> 
+	<p class="post-content">{@html deHTML(convertLinks(post.content))}</p> 
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"
