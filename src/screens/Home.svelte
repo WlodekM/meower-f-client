@@ -38,7 +38,7 @@
 	let numPages = null;
 	let postErrors = "";
 	
-	console.log(`User: ${$user.name} \n ${["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name)}`)
+	console.log(`User: ${$user.name} \n ${["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name.toLowerCase())}`)
 
 	// As we use a Load More button and the home is sorted newest-first,
 	// we need an offset for posts to be continuous.
@@ -179,7 +179,7 @@
 	ulist.subscribe(val => {
 		_ulist = val;
 	});
-	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name)
+	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name.toLowerCase())
 </script>
 
 <div class="home">
