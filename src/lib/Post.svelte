@@ -83,8 +83,8 @@
   let text = input;
   const linksFound = text.match( /(?:www|https?)[^\s]+/g );
   const aLink = [];
-  text = text.replace(/\</g,"&lt;")   //for <
-  text = text.replace(/\>/g,"&gt;")   //for >
+//   text = text.replace(/\</g,"&lt;")   //for <
+//   text = text.replace(/\>/g,"&gt;")   //for >
 
   if ( linksFound != null ) {
 
