@@ -191,6 +191,8 @@
 				{/if}
 			{/if}
 		</div>
+		{if revower}
+					
 		<button
 			class="pfp"
 			on:click={() => {
@@ -205,15 +207,28 @@
 				page.set("profile");
 			}}
 		>
-			{if revower}
 			
 				<PFP
 					icon=4
 					alt="{post.user}'s profile picture"
 					online={$ulist.includes(post.user)}
 				/>
-			
-			{:else}
+				
+		{:else}
+		<button
+			class="pfp"
+			on:click={() => {
+				if (
+					post.user === "Notification" ||
+					post.user === "Announcement" ||
+					post.user === "Server" ||
+					webhook
+				)
+					return;
+				profileClicked.set(post.user);
+				page.set("profile");
+			}}
+		>
 			
 				<PFP
 					icon={$profileCache[post.user] && !webhook
