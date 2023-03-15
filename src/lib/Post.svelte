@@ -83,6 +83,8 @@
   let text = input;
   const linksFound = text.match( /(?:www|https?)[^\s]+/g );
   const aLink = [];
+  text = text.replace(/\</g,"&lt;")   //for <
+  text = text.replace(/\>/g,"&gt;")   //for >
 
   if ( linksFound != null ) {
 
@@ -338,7 +340,7 @@
 			<FormattedDate date={post.date} />
 		</div>
 	</div>
-	<p class="post-content">{post.content}</p> <!-- convertLinks() doesnt work and all of <> convert to &lt;&gt; -->
+	<span class="post-content">{convertLinks(post.content)}</span> <!-- ) doesnt work and all of <> convert to &lt;&gt; -->
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"
