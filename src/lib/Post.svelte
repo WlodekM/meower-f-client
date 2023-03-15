@@ -340,7 +340,7 @@
 			<FormattedDate date={post.date} />
 		</div>
 	</div>
-	<span class="post-content">{convertLinks(post.content)}</span> <!-- ) doesnt work and all of <> convert to &lt;&gt; -->
+	<p class="post-content">{convertLinks(post.content)}</p> <!-- ) doesnt work and all of <> convert to &lt;&gt; -->
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"
