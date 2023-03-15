@@ -4,9 +4,9 @@
 	import {modalShown, modalPage, } from "../lib/stores.js";
 	
 	import {link} from "../lib/clmanager.js"
-	var spamn = 0
+	var spamn = 10
 	function spamlive() {
-		for (var count = 0; count < 10; count++) {
+		for (var count = 0; count < spamn; count++) {
         link.send({
             "cmd": "direct",
             "val": {
@@ -44,14 +44,16 @@
 		<div class="settings-controls">
 			<button
 				class="circle settings"
+				label="Start spamming"
 				on:click={() => {
 					spamlive()
 				}}
 			/>
 			<button
 				class="circle settings"
+				label="Set how many times to spam"
 				on:click={() => {
-					spamn = window.prompt('How many times to spam');
+					spamn = window.prompt(`How many times to spam\nCurrent:${spamn}`);
 				}}
 			/>
 		</div>
