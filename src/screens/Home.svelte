@@ -9,7 +9,6 @@
 		ulist,
 		spinner,
 		lastTyped,
-		user,
 		mainPage as page,
 	} from "../lib/stores.js";
 	import {shiftHeld} from "../lib/keyDetect.js";
