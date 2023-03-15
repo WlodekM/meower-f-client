@@ -79,12 +79,13 @@
 	 * Initialize this post's special behavior (user profile, images)).
 	 */
 function deHTML( input ) {
-	input.replaceAll("&", "&amp;");
-	input.replaceAll("<", "&lt;");
-	input.replaceAll(">", "&gt;");
-	input.replaceAll('"', "&quot;");
-	input.replaceAll("'", "&apos;");
-	return input
+	let dhout = input
+	dhout.replaceAll("&", "&amp;");
+	dhout.replaceAll("<", "&lt;");
+	dhout.replaceAll(">", "&gt;");
+	dhout.replaceAll('"', "&quot;");
+	dhout.replaceAll("'", "&apos;");
+	return dhout
 }
 	const convertLinks = ( input ) => {
 
