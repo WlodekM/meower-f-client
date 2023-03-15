@@ -29,6 +29,8 @@
 	let bridged = false;
 	let webhook = false;
 	let creator = false;
+	let duck = false;
+	let revower = false;
 
 	let images = [];
 
@@ -41,6 +43,7 @@
 		"https://assets.meower.org/",
 		"https://api.meower.org/",
 		"https://forums.meower.org/",
+		
 		// not everyone can add urls to go.meower.org, should be fine
 		"https://go.meower.org/",
 		"https://nextcloud.meower.org/",
@@ -65,6 +68,7 @@
 
 		// Discord
 		"https://cdn.discordapp.com/",
+		"https://media.discordapp.net/",
 	];
 
 	// TODO: make bridged tag a setting
@@ -74,24 +78,80 @@
 	/**
 	 * Initialize this post's special behavior (user profile, images)).
 	 */
+function deHTML( input ) {
+	let dhout = input
+	dhout.replaceAll("&", "&amp;");
+	dhout.replaceAll("<", "&lt;");
+	dhout.replaceAll(">", "&gt;");
+	dhout.replaceAll('"', "&quot;");
+	dhout.replaceAll("'", "&apos;");
+	return dhout
+}
+	const convertLinks = ( input ) => {
+
+  let text = input;
+  const linksFound = text.match( /(?:www|https?)[^\s]+/g );
+  const aLink = [];
+//   text = text.replace(/\</g,"&lt;")   //for <
+//   text = text.replace(/\>/g,"&gt;")   //for >
+
+  if ( linksFound != null ) {
+
+    for ( let i=0; i<linksFound.length; i++ ) {
+      let replace = linksFound[i];
+      if ( !( linksFound[i].match( /(http(s?)):\/\// ) ) ) { replace = 'http://' + linksFound[i] }
+      let linkText = replace.split( '/' )[2];
+      if ( linkText.substring( 0, 3 ) == 'www' ) { linkText = linkText.replace( 'www.', '' ) }
+      if ( linkText.match( /youtu/ ) ) {
+
+        let youtubeID = replace.split( '/' ).slice(-1)[0];
+        aLink.push( '<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' )
+    	  }
+	      else if ( linkText.match( /vimeo/ ) ) {
+    	    let vimeoID = replace.split( '/' ).slice(-1)[0];
+	        aLink.push( '<div class="video-wrapper"><iframe src="https://player.vimeo.com/video/' + vimeoID + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
+    	  }
+	      else {
+    	    aLink.push( '<a href="' + replace + '" target="_blank">' + linkText + '</a>' );
+	      }
+    	  text = text.split( linksFound[i] ).map(item => { return aLink[i].includes('iframe') ? item.trim() : item } ).join( aLink[i] );
+	    }
+    	return text;
+
+	  }
+	  else {
+    	return input;
+	  }
+	}
 	function initPostUser() {
 		if (!post.user) return;
-		
-		let pst_auth = post.user;
-		if (["wlodekm3","wlodekm5"].includes(pst_auth.toLowerCase())) {
-			creator = true
-		}
 
 		if (post.content.includes(":")) {
 			bridged = post.user === "Discord";
 			webhook = post.user == "Webhooks";
+			revower = post.user == "Revower";
 		}
 
 		if (bridged || webhook) {
 			post.user = post.content.split(": ")[0];
 			post.content = post.content.slice(post.content.indexOf(": ") + 1);
 		}
+		
+		if (revower) {
 
+			post.user = post.content.split(": ")[0];
+			post.content = post.content.slice(post.content.indexOf(": ") + 1);
+		
+		}
+		
+		let pst_auth = post.user;          //I forgot pass to wlodekm4 but it is still here 
+		if (["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes(pst_auth.toLowerCase())) {
+			creator = true
+		}
+		if (["mikedev","mikedev-test"].includes(pst_auth.toLowerCase())) {
+			duck = true
+		}
+		
 		// Match image syntax
 		// ([title: https://url])
 		const iterator = post.content.matchAll(
@@ -180,6 +240,31 @@
 				{/if}
 			{/if}
 		</div>
+		{#if revower}
+					
+		<button
+			class="pfp"
+			on:click={() => {
+				if (
+					post.user === "Notification" ||
+					post.user === "Announcement" ||
+					post.user === "Server" ||
+					webhook
+				)
+					return;
+				profileClicked.set(post.user);
+				page.set("profile");
+			}}>
+		
+			
+				<PFP
+					icon=4
+					alt="{post.user}'s profile picture"
+					online={$ulist.includes(post.user)}
+				/>
+		</button>
+				
+		{:else}
 		<button
 			class="pfp"
 			on:click={() => {
@@ -194,14 +279,17 @@
 				page.set("profile");
 			}}
 		>
-			<PFP
-				icon={$profileCache[post.user] && !webhook
-					? $profileCache[post.user].pfp_data
-					: -3}
-				alt="{post.user}'s profile picture"
-				online={$ulist.includes(post.user)}
-			/>
+			
+				<PFP
+					icon={$profileCache[post.user] && !webhook
+						? $profileCache[post.user].pfp_data
+						: -3}
+					alt="{post.user}'s profile picture"
+					online={$ulist.includes(post.user)}
+				/>
+			
 		</button>
+			{/if}
 		<div class="creatordate">
 			<div class="creator">
 				<h2>
@@ -229,6 +317,20 @@
 					/>
 				{/if}
 
+				{#if revower}
+					<Badge
+						text="BRIDGED"
+						title="This post is a post bridged from a Revolt server by the @Revower bot"
+					/>
+				{/if}
+
+				{#if duck}
+					<Badge
+						text="DUCK"
+						title="Quack!"
+					/>
+				{/if}
+				
 				<!-- disabled until proper bot badges are added
 				{#if post.isvbot && !webhook}
 					<Badge
@@ -247,7 +349,7 @@
 			<FormattedDate date={post.date} />
 		</div>
 	</div>
-	<p class="post-content">{post.content}</p>
+	<p class="post-content">{@html deHTML(convertLinks(post.content))}</p> 
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"
@@ -263,6 +365,10 @@
 </Container>
 
 <style>
+	.post-content {
+		margin-block-start: 1em;
+    	margin-block-end: 1em;
+	}
 	.pfp {
 		margin-right: 0.2em;
 		padding: 0;

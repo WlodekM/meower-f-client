@@ -126,16 +126,6 @@
 	</button>
 	<button on:click={() => goto("settings")} class="settings-btn round">
 		<img src={settings} alt="Settings" draggable={false} />
-	</button>
-	<button
-		on:click={() => {
-			modalPage.set("logout");
-			modalShown.set(true);
-		}}
-		class="logout-btn round"
-	>
-		<img src={logout} alt="Log out" draggable={false} />
-	</button>
 </div>
 
 <style>
