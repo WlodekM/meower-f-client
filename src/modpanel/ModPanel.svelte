@@ -44,14 +44,14 @@
 		<div class="settings-controls">
 			<button
 				class="circle settings"
-				label="Start spamming"
+				alt="Start spamming"
 				on:click={() => {
 					spamlive()
 				}}
 			/>
 			<button
 				class="circle settings"
-				label="Set how many times to spam"
+				alt="Set how many times to spam"
 				on:click={() => {
 					spamn = window.prompt(`How many times to spam\nCurrent:${spamn}`);
 				}}
