@@ -205,14 +205,15 @@
 					return;
 				profileClicked.set(post.user);
 				page.set("profile");
-			}}
-		>
+			}}>
+		
 			
 				<PFP
 					icon=4
 					alt="{post.user}'s profile picture"
 					online={$ulist.includes(post.user)}
 				/>
+		</button>
 				
 		{:else}
 		<button
@@ -238,8 +239,8 @@
 					online={$ulist.includes(post.user)}
 				/>
 			
-			{/if}
 		</button>
+			{/if}
 		<div class="creatordate">
 			<div class="creator">
 				<h2>
