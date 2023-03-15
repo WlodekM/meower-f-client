@@ -9,6 +9,7 @@
 		ulist,
 		spinner,
 		lastTyped,
+		user,
 		mainPage as page,
 	} from "../lib/stores.js";
 	import {shiftHeld} from "../lib/keyDetect.js";
@@ -177,8 +178,11 @@
 	ulist.subscribe(val => {
 		_ulist = val;
 	});
-	
-	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name)
+	if (!!$user.name) {
+		var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name)
+	} else {
+		var isdev = false
+	}
 </script>
 
 <div class="home">
