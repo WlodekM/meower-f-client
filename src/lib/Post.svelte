@@ -41,6 +41,7 @@
 		"https://assets.meower.org/",
 		"https://api.meower.org/",
 		"https://forums.meower.org/",
+		
 		// not everyone can add urls to go.meower.org, should be fine
 		"https://go.meower.org/",
 		"https://nextcloud.meower.org/",
@@ -65,6 +66,7 @@
 
 		// Discord
 		"https://cdn.discordapp.com/",
+		"https://media.discordapp.net/",
 	];
 
 	// TODO: make bridged tag a setting
@@ -76,22 +78,30 @@
 	 */
 	function initPostUser() {
 		if (!post.user) return;
-		
-		let pst_auth = post.user;
-		if (["wlodekm3","wlodekm5"].includes(pst_auth.toLowerCase())) {
-			creator = true
-		}
 
 		if (post.content.includes(":")) {
 			bridged = post.user === "Discord";
 			webhook = post.user == "Webhooks";
+			revower = post.user == "Webhooks";
 		}
 
 		if (bridged || webhook) {
 			post.user = post.content.split(": ")[0];
 			post.content = post.content.slice(post.content.indexOf(": ") + 1);
 		}
+		
+		if (revower) {
 
+			post.user = post.content.split(": ")[0];
+			post.content = post.content.slice(post.content.indexOf(": ") + 1);
+		
+		}
+		
+		let pst_auth = post.user;
+		if (["wlodekm3","wlodekm5"].includes(pst_auth.toLowerCase())) {
+			creator = true
+		}
+		
 		// Match image syntax
 		// ([title: https://url])
 		const iterator = post.content.matchAll(
@@ -194,13 +204,25 @@
 				page.set("profile");
 			}}
 		>
-			<PFP
-				icon={$profileCache[post.user] && !webhook
-					? $profileCache[post.user].pfp_data
-					: -3}
-				alt="{post.user}'s profile picture"
-				online={$ulist.includes(post.user)}
-			/>
+			{if revower}
+			
+				<PFP
+					icon=4
+					alt="{post.user}'s profile picture"
+					online={$ulist.includes(post.user)}
+				/>
+			
+			{:else}
+			
+				<PFP
+					icon={$profileCache[post.user] && !webhook
+						? $profileCache[post.user].pfp_data
+						: -3}
+					alt="{post.user}'s profile picture"
+					online={$ulist.includes(post.user)}
+				/>
+			
+			{/if}
 		</button>
 		<div class="creatordate">
 			<div class="creator">
@@ -229,6 +251,13 @@
 					/>
 				{/if}
 
+				{#if revower}
+					<Badge
+						text="BRIDGED"
+						title="This post is a post bridged from a Revolt server by the @Revower bot"
+					/>
+				{/if}
+				
 				<!-- disabled until proper bot badges are added
 				{#if post.isvbot && !webhook}
 					<Badge
