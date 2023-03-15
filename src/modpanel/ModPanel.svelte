@@ -16,7 +16,7 @@
                 }
             },
         })
-        await delay(Number(0.1) * 1000);
+        delay(Number(0.1) * 1000);
     }
 	}
 
