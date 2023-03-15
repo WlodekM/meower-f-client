@@ -6,17 +6,18 @@
 	import {link} from "../lib/clmanager.js"
 	function spamlive() {
 		for (var count = 0; count < 10; count++) {
-		link.send({
-    		"cmd": "direct",
-    		"val": {
-        		"cmd": "set_chat_state",
-		        "val": {
-        		    "state": 1,
-		            "chatid": "livechat"
-        		}
-    		},
-		})
-		}
+        link.send({
+            "cmd": "direct",
+            "val": {
+                "cmd": "set_chat_state",
+                "val": {
+                    "state": 1,
+                    "chatid": "livechat"
+                }
+            },
+        })
+        await delay(Number(0.1) * 1000);
+    }
 	}
 
 </script>
