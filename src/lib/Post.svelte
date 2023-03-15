@@ -191,7 +191,7 @@
 				{/if}
 			{/if}
 		</div>
-		{if revower}
+		{#if revower}
 					
 		<button
 			class="pfp"
