@@ -10,7 +10,7 @@
 		localStorage.setItem('font', fonttostore)
 	}
 	function GetFont() {
-		return(localStorage('font'))
+		return(localStorage.getItem('font'))
 	}
 </script>
 
