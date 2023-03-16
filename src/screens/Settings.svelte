@@ -144,7 +144,7 @@
 		>
 	</div>
 
-	<h2>BGM</h2>
+<!-- 	<h2>BGM</h2>
 	BGM is currently {!$user.sfx ? "disabled" : "enabled"}.
 </Container>
 {#if $user.name}
@@ -157,7 +157,7 @@
 					$modalShown = true;
 				}}
 			/>
-		</div>
+		</div> -->
 
 		<h2>Change Password</h2>
 		Change your account password.
