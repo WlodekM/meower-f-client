@@ -85,6 +85,7 @@
 			on:click={() => {
 				const _user = {}
 				_user.font = GetFont()
+				console.log({"OldFont":GetFont(),"OldFontID":fonts.indexOf(_user.font),"FontsList":fonts,"NewFont":fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]})
 				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
 				StoreFont(_user.font)
 			}}
