@@ -161,10 +161,10 @@
 	}
 
 	#main.font-undefined {
-		font-family: Simvoni, sans-serif;
+		font-family: Simvoni, sans-serif !important;
 	}
 	#main.font-default {
-		font-family: Simvoni, sans-serif;
+		font-family: Simvoni, sans-serif !important;
 	}
 	#main.font-mono {
 		font-family: monospace;
