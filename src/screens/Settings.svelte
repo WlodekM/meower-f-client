@@ -191,7 +191,6 @@
 		Log out of your account
 	</Container>
 		
-{/if}
 
 <!--
 	{"cmd": "direct", "val": {"cmd": "del_tokens", "val": ""}, "listener": "del_tokens"}
