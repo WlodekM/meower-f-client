@@ -1,7 +1,7 @@
 <!-- You probably know what this is. -->
 <script>
 	const themes = ["orange", "blue", "purple", "green", "red"];
-	const fonts = ["default", "monospace"];
+	const fonts = ["default", "monospace", "test"];
 	import Container from "../lib/Container.svelte";
 
 	import {user, modalShown, modalPage} from "../lib/stores.js";
@@ -83,7 +83,7 @@
 		<button
 			class="circle settings"
 			on:click={() => {
-				const _user = $user;
+				const _user = {}
 				_user.font = GetFont()
 				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
 				StoreFont(_user.font)
