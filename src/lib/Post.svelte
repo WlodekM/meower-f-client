@@ -365,6 +365,9 @@ function deHTML( input ) {
 </Container>
 
 <style>
+	.post-content a {
+		color: #00a8fc
+	}
 	.post-content {
 		margin-block-start: 1em;
     	margin-block-end: 1em;
