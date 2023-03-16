@@ -11,4 +11,3 @@ The Meower F client is possible thanks to these ***amazing*** **people**!
 
 - @WlodekM
 - @mdwalters
-- @
