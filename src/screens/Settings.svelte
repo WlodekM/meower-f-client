@@ -92,7 +92,7 @@
 	</div>
 
 	<h2>Font</h2>
-	The font is currently set to {$user.font}.
+	The font is currently set to {GetFont()}.
 </Container>
 <Container>
 	<div class="settings-controls">
