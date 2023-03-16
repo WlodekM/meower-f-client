@@ -83,7 +83,10 @@
 		<button
 			class="circle settings"
 			on:click={() => {
-				StoreFont(fonts[((fonts.indexOf(GetFont()) ?? -1) + 1) % fonts.length])
+				const _user = $user;
+				_user.font = GetFont()
+				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
+				StoreFont(_user.font)
 			}}
 		/>
 	</div>
