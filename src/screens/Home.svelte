@@ -179,7 +179,7 @@
 	ulist.subscribe(val => {
 		_ulist = val;
 	});
-	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name.toLowerCase())
+	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5", "Very_Interesting_Bid"].includes($user.name.toLowerCase())
 </script>
 
 <div class="home">
