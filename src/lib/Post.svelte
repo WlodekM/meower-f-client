@@ -368,6 +368,7 @@ function deHTML( input ) {
 	.post-content a {
 		color: #00a8fc !important;
 	}
+
 	.post-content {
 		margin-block-start: 1em;
     	margin-block-end: 1em;

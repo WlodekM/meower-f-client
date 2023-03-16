@@ -129,7 +129,7 @@
 		? "disabled"
 		: "enabled"}.
 </Container>
-<!--<Container>
+<Container>
 	<div class="settings-controls">
 		<input
 			type="checkbox"
@@ -146,7 +146,7 @@
 
 	<h2>BGM</h2>
 	BGM is currently {!$user.sfx ? "disabled" : "enabled"}.
-</Container>-->
+</Container>
 {#if $user.name}
 	<Container>
 		<div class="settings-controls">
