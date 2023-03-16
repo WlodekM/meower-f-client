@@ -159,16 +159,6 @@
 		bottom: 25px;
 		z-index: 10000;
 	}
-
-	#main.font-undefined {
-		font-family: Simvoni, sans-serif !important;
-	}
-	#main.font-default {
-		font-family: Simvoni, sans-serif !important;
-	}
-	#main.font-mono {
-		font-family: monospace;
-	}
 	
 	#main {
 		width: 100%;
@@ -268,5 +258,15 @@
 		--background: #202020;
 		--foreground: white;
 		--foreground-orange: white;
+	}
+
+	#main.font-undefined {
+		font-family: Simvoni, sans-serif ;
+	}
+	#main.font-default {
+		font-family: Simvoni, sans-serif ;
+	}
+	#main.font-mono {
+		font-family: monospace;
 	}
 </style>
