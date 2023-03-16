@@ -2,6 +2,7 @@
 <script>
 	const themes = ["orange", "blue", "purple", "green", "red"];
 	const fonts = ["default", "monospace", "test"];
+	var currentfont = ""
 	import Container from "../lib/Container.svelte";
 
 	import {user, modalShown, modalPage} from "../lib/stores.js";
@@ -88,12 +89,13 @@
 				console.log({"OldFont":GetFont(),"OldFontID":fonts.indexOf(_user.font),"FontsList":fonts,"NewFont":fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]})
 				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
 				StoreFont(_user.font)
+				clm.updateProfile();
 			}}
 		/>
 	</div>
 
 	<h2>Font</h2>
-	The font is currently set to {GetFont()}.
+	The font is currently set to {localStorage.getItem('font')}.
 </Container>
 <Container>
 	<div class="settings-controls">
