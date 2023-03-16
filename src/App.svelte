@@ -42,8 +42,8 @@
 <main
 	id="main"
 	class:font-undefined={$user.font === undefined}
-	class:font-mono={$user.font === "monospace"}
-	class:font-default={$user.font === "default"}
+	class:font-mono={localStorage.getItem('font') === "monospace"}
+	class:font-default={localStorage.getItem('font') === "default"}
 	class:theme-orange={$user.theme === "orange"}
 	class:theme-blue={$user.theme === "blue"}
 	class:theme-purple={$user.theme === "purple"}
