@@ -10,7 +10,7 @@
 		localStorage.setItem('font', fonttostore)
 	}
 	function GetFont() {
-		return(localStorage('font'))
+		return(localStorage.getItem('font'))
 	}
 </script>
 
@@ -83,7 +83,10 @@
 		<button
 			class="circle settings"
 			on:click={() => {
-				StoreFont(fonts[((fonts.indexOf(GetFont()) ?? -1) + 1) % fonts.length])
+				const _user = $user;
+				_user.font = GetFont()
+				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
+				StoreFont(_user.font)
 			}}
 		/>
 	</div>
@@ -191,7 +194,6 @@
 		Log out of your account
 	</Container>
 		
-{/if}
 
 <!--
 	{"cmd": "direct", "val": {"cmd": "del_tokens", "val": ""}, "listener": "del_tokens"}
