@@ -385,6 +385,14 @@ function deHTML( input ) {
 </Container>
 
 <style>
+	blockquote {
+    	border-left: 3px solid var(--orange);
+    	margin: 0.25em;
+    	margin-left: 0;
+	    padding: 0.25em;
+    	padding-left: 0.625em;
+	}
+	
 	.post-content a {
 		color: #00a8fc !important;
 	}
@@ -449,13 +457,5 @@ function deHTML( input ) {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.25em;
-	}
-	
-	blockquote {
-    	border-left: 3px solid var(--orange);
-    	margin: 0.25em;
-    	margin-left: 0;
-	    padding: 0.25em;
-    	padding-left: 0.625em;
 	}
 </style>
