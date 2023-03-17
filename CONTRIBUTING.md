@@ -2,7 +2,7 @@
 
 ## Branch information
 
-The main branch where development takes place is `main`. The `main` branch is what you see at https://meower-f-client-wlodekm.vercel.app/, and is merged into for each release.
+The main branch where development takes place is `develop`. The `master` branch is what you see at https://app.meower.org, and is merged into for each release.
 
 Branches are usually named like `username-branch`, where `username` is a short version of your username (like `cst`, `tnix`, et.), and `branch` is the branch name.
 
@@ -17,8 +17,8 @@ Requirements:
 To clone and run a development server on your machine (that autoupdates when you modify files):
 
 ```
-git clone https://github.com/WlodekM/meower-f-client/
-cd -meower-themes-web
+git clone https://github.com/meower-media-co/Meower-Svelte
+cd Meower-Svelte
 npm install
 npm run dev
 ```
