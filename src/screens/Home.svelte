@@ -37,8 +37,6 @@
 	let pageLoading = false;
 	let numPages = null;
 	let postErrors = "";
-	
-	console.log(`User: ${$user.name} \n ${["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes($user.name.toLowerCase())}`)
 
 	// As we use a Load More button and the home is sorted newest-first,
 	// we need an offset for posts to be continuous.
@@ -179,7 +177,6 @@
 	ulist.subscribe(val => {
 		_ulist = val;
 	});
-	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5", "Very_Interesting_Bid"].includes($user.name.toLowerCase())
 </script>
 
 <div class="home">
@@ -201,7 +198,7 @@
 		</div>
 	{:then}
 		<Container>
-			<!-- cst: comments probably from blocs: -->
+			<!-- cst: comments probably from blocs:
 			{#if isdev}
 			<div class="settings-controls">
 				<button
@@ -213,7 +210,7 @@
 				>
 			</div>
 			{/if}
-			<!-- Zed just told me the cl4 port will move the mod panel to a seperate site -->
+			Zed just told me the cl4 port will move the mod panel to a seperate site -->
 			<h1>Home</h1>
 			There are currently {_ulist.length} user(s) online{#if _ulist.length}{" "}({_ulist.join(
 					", "
