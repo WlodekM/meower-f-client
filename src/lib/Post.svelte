@@ -81,12 +81,20 @@
 
 function format( input ) {
 	let dhout = input
-	dhout = dhout.replaceAll("[b]", "<b>");
-	dhout = dhout.replaceAll("[/b]", "</b>");
-	dhout = dhout.replaceAll("[i]", "<i>");
-	dhout = dhout.replaceAll("[/i]", "</i>");
-	dhout = dhout.replaceAll("[u]", "<ins>");
-	dhout = dhout.replaceAll("[/u]", "</ins>");
+	let formating = {
+		"b":"<b>",
+		"/b":"</b>",
+		"i":"<i>",
+		"/i":"</i>",
+		"u":"<ins>",
+		"/u":"</ins>",
+		"bq":"<blockquote>",
+		"/bq":"</blockquote>",
+	}
+	Object.keys(formating).forEach(function(key) {
+		dhout = dhout.replaceAll(`${"["+key+"]"}`, formating[key]);
+  		console.log('Key : ' + `${key}` + ', Value : ' + formating[key])
+	})
 
 	return dhout
 }
