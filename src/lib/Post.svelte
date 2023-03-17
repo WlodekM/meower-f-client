@@ -28,7 +28,6 @@
 
 	let bridged = false;
 	let webhook = false;
-	let creator = false;
 	let duck = false;
 	let revower = false;
 
@@ -164,10 +163,6 @@ function deHTML( input ) {
 		
 		}
 		
-		let pst_auth = post.user;          //I forgot pass to wlodekm4 but it is still here 
-		if (["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes(pst_auth.toLowerCase())) {
-			creator = true
-		}
 		if (["mikedev","mikedev-test","immaduck","imamduck"].includes(pst_auth.toLowerCase())) {
 			duck = true
 		}
@@ -315,13 +310,6 @@ function deHTML( input ) {
 				<h2>
 					{post.user}
 				</h2>
-
-				{#if creator}
-					<Badge
-						text="CREATOR"
-						title="This post is a post made by the creator of F client"
-					/>
-				{/if}
 				
 				{#if bridged}
 					<Badge
