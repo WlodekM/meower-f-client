@@ -91,6 +91,7 @@
 				StoreFont(_user.font)
 				currentfont = GetFont()
 				clm.updateProfile();
+
 			}}
 		/>
 	</div>
