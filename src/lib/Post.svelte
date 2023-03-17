@@ -85,6 +85,8 @@ function format( input ) {
 	dhout = dhout.replaceAll("[/b]", "</b>");
 	dhout = dhout.replaceAll("[i]", "<i>");
 	dhout = dhout.replaceAll("[/i]", "</i>");
+	dhout = dhout.replaceAll("[u]", "<ins>");
+	dhout = dhout.replaceAll("[/u]", "</ins>");
 	return dhout
 }
 function deHTML( input ) {
