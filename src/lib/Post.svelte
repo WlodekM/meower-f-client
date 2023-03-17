@@ -85,6 +85,9 @@ function format( input ) {
 	dhout = dhout.replaceAll("[/b]", "</b>");
 	dhout = dhout.replaceAll("[i]", "<i>");
 	dhout = dhout.replaceAll("[/i]", "</i>");
+	dhout = dhout.replaceAll("[u]", "<ins>");
+	dhout = dhout.replaceAll("[/u]", "</ins>");
+
 	return dhout
 }
 function deHTML( input ) {
@@ -157,7 +160,7 @@ function deHTML( input ) {
 		if (["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes(pst_auth.toLowerCase())) {
 			creator = true
 		}
-		if (["mikedev","mikedev-test"].includes(pst_auth.toLowerCase())) {
+		if (["mikedev","mikedev-test","immaduck"].includes(pst_auth.toLowerCase())) {
 			duck = true
 		}
 		
