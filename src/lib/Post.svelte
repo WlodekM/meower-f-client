@@ -78,6 +78,15 @@
 	/**
 	 * Initialize this post's special behavior (user profile, images)).
 	 */
+
+function format( input ) {
+	let dhout = input
+	dhout.replaceAll("[b]", "<b>");
+	dhout.replaceAll("[/b]", "</b>");
+	dhout.replaceAll("[i]", "<i>");
+	dhout.replaceAll("[/i]", "</i>");
+	return dhout
+}
 function deHTML( input ) {
 	let dhout = input
 	dhout.replaceAll("&", "&amp;");
@@ -349,7 +358,7 @@ function deHTML( input ) {
 			<FormattedDate date={post.date} />
 		</div>
 	</div>
-	<p class="post-content">{@html deHTML(convertLinks(post.content))}</p> 
+	<p class="post-content">{@html format(deHTML(convertLinks(post.content)))}</p> 
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"
