@@ -385,7 +385,7 @@ function deHTML( input ) {
 </Container>
 
 <style>
-	blockquote {
+	.post-content :global(blockquote) {
     	border-left: 3px solid var(--orange);
     	margin: 0.25em;
     	margin-left: 0;
