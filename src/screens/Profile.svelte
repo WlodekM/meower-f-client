@@ -20,10 +20,10 @@
 
 	import {tick} from "svelte";
 
-	const PFP_COUNT = 38;
+	const PFP_COUNT = 37;
 
 	const pfps = new Array(PFP_COUNT).fill().map((_, i) => i + 1);
-	pfps.push(-1, 500, 101, 102, 404) //add secret pfps
+	pfps.push(-1, 500, 101, 102) //add secret pfps
 	let pfpSwitcher = false;
 
 	async function loadProfile() {
