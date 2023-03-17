@@ -386,11 +386,13 @@ function deHTML( input ) {
 
 <style>
 	.post-content :global(blockquote) {
-    	border-left: 3px solid var(--orange);
-    	margin: 0.25em;
-    	margin-left: 0;
-	    padding: 0.25em;
-    	padding-left: 0.625em;
+		border-left: 3px solid var(--orange);
+		margin: .25em .25em .25em 0;
+		padding: .25em .25em .25em .625em;
+		background-color: rgba(255,255,255,0.05);
+		padding-right: 0;
+		margin-right: 0.4em;
+		border-radius: 0.15em;
 	}
 	
 	.post-content a {
