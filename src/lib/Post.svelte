@@ -81,19 +81,19 @@
 
 function format( input ) {
 	let dhout = input
-	dhout.replaceAll("[b]", "<b>");
-	dhout.replaceAll("[/b]", "</b>");
-	dhout.replaceAll("[i]", "<i>");
-	dhout.replaceAll("[/i]", "</i>");
+	dhout = dhout.replaceAll("[b]", "<b>");
+	dhout = dhout.replaceAll("[/b]", "</b>");
+	dhout = dhout.replaceAll("[i]", "<i>");
+	dhout = dhout.replaceAll("[/i]", "</i>");
 	return dhout
 }
 function deHTML( input ) {
 	let dhout = input
-	dhout.replaceAll("&", "&amp;");
-	dhout.replaceAll("<", "&lt;");
-	dhout.replaceAll(">", "&gt;");
-	dhout.replaceAll('"', "&quot;");
-	dhout.replaceAll("'", "&apos;");
+	dhout = dhout.replaceAll("&", "&amp;");
+	dhout = dhout.replaceAll("<", "&lt;");
+	dhout = dhout.replaceAll(">", "&gt;");
+	dhout = dhout.replaceAll('"', "&quot;");
+	dhout = dhout.replaceAll("'", "&apos;");
 	return dhout
 }
 	const convertLinks = ( input ) => {
