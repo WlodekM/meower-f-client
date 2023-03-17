@@ -41,9 +41,9 @@
 
 <main
 	id="main"
-	class:font-undefined={$user.font === undefined}
-	class:font-mono={$user.font === "monospace"}
-	class:font-default={$user.font === "default"}
+	class:font-undefined={localStorage.getItem('font') === undefined}
+	class:font-mono={localStorage.getItem('font') === "monospace"}
+	class:font-default={localStorage.getItem('font') === "default"}
 	class:theme-orange={$user.theme === "orange"}
 	class:theme-blue={$user.theme === "blue"}
 	class:theme-purple={$user.theme === "purple"}
@@ -159,16 +159,6 @@
 		bottom: 25px;
 		z-index: 10000;
 	}
-
-	#main.font-undefined {
-		font-family: Simvoni, sans-serif;
-	}
-	#main.font-default {
-		font-family: Simvoni, sans-serif;
-	}
-	#main.font-mono {
-		font-family: monospace;
-	}
 	
 	#main {
 		width: 100%;
@@ -268,5 +258,15 @@
 		--background: #202020;
 		--foreground: white;
 		--foreground-orange: white;
+	}
+
+	#main.font-undefined {
+		font-family: Simvoni, sans-serif ;
+	}
+	#main.font-default {
+		font-family: Simvoni, sans-serif ;
+	}
+	#main.font-mono {
+		font-family: monospace;
 	}
 </style>

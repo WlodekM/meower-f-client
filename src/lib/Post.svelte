@@ -78,13 +78,22 @@
 	/**
 	 * Initialize this post's special behavior (user profile, images)).
 	 */
+
+function format( input ) {
+	let dhout = input
+	dhout = dhout.replaceAll("[b]", "<b>");
+	dhout = dhout.replaceAll("[/b]", "</b>");
+	dhout = dhout.replaceAll("[i]", "<i>");
+	dhout = dhout.replaceAll("[/i]", "</i>");
+	return dhout
+}
 function deHTML( input ) {
 	let dhout = input
-	dhout.replaceAll("&", "&amp;");
-	dhout.replaceAll("<", "&lt;");
-	dhout.replaceAll(">", "&gt;");
-	dhout.replaceAll('"', "&quot;");
-	dhout.replaceAll("'", "&apos;");
+	dhout = dhout.replaceAll("&", "&amp;");
+	dhout = dhout.replaceAll("<", "&lt;");
+	dhout = dhout.replaceAll(">", "&gt;");
+	dhout = dhout.replaceAll('"', "&quot;");
+	dhout = dhout.replaceAll("'", "&apos;");
 	return dhout
 }
 	const convertLinks = ( input ) => {
@@ -349,7 +358,7 @@ function deHTML( input ) {
 			<FormattedDate date={post.date} />
 		</div>
 	</div>
-	<p class="post-content">{@html deHTML(convertLinks(post.content))}</p> 
+	<p class="post-content">{@html format(deHTML(convertLinks(post.content)))}</p> 
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"

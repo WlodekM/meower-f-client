@@ -12,6 +12,7 @@
 	function GetFont() {
 		return(localStorage.getItem('font'))
 	}
+	var currentfont = GetFont()
 </script>
 
 <!--
@@ -83,16 +84,20 @@
 		<button
 			class="circle settings"
 			on:click={() => {
-				const _user = $user;
+				const _user = {}
 				_user.font = GetFont()
+				console.log({"OldFont":GetFont(),"OldFontID":fonts.indexOf(_user.font),"FontsList":fonts,"NewFont":fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]})
 				_user.font = fonts[((fonts.indexOf(_user.font) ?? -1) + 1) % fonts.length]
 				StoreFont(_user.font)
+				currentfont = GetFont()
+				clm.updateProfile();
+
 			}}
 		/>
 	</div>
 
 	<h2>Font</h2>
-	The font is currently set to {$user.font}.
+	The font is currently set to {currentfont}.
 </Container>
 <Container>
 	<div class="settings-controls">
