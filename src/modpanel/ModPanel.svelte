@@ -19,6 +19,11 @@
         })
     }
 	}
+	var whusername = ""
+	var whpost = ""
+	function whsend() {
+		console.log(`${whusername}:${whpost}`)
+	}
 
 </script>
 
@@ -26,6 +31,20 @@
 	<Container>
 		<h1>Moderation Panel</h1>
 		Hello everyone its THE MOD PANEL HERE back with another youtube video!!!!!!
+	</Container>
+	<Container>
+		<div class="settings-controls">
+            <input type="text" id="username" value="Username"  bind:value={whusername}>
+        	<textarea rows="4" class="container type-message" style="resize: none;width:calc(100% - (11px * 2) - 100px)"  bind:value={whpost}></textarea>
+			<button
+				class="circle settings"
+				on:click={() => {
+					whsend()
+				}}
+			/>
+		</div>
+		<h1>Send message using webhook</h1>
+		Moderate a certain User.
 	</Container>
 	<Container>
 		<div class="settings-controls">
