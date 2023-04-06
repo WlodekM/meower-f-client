@@ -19,7 +19,7 @@
         })
     }
 	}
-	var whusername = ""
+	var whusername = "User"
 	var whpost = ""
 	function whsend() {
 		console.log(`${whusername}:${whpost}`)
@@ -34,7 +34,7 @@
 	</Container>
 	<Container>
 		<div class="settings-controls">
-            <input bind:value={whusername} type="text" id="username" value="Username">
+            <input bind:value={whusername} type="text" id="username">
         	<textarea bind:value={whpost} rows="4" class="container type-message" style="resize: none;width:calc(100% - (11px * 2) - 100px)"></textarea>
 			<button
 				class="circle settings"
