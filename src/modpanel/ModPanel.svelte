@@ -34,8 +34,8 @@
 	</Container>
 	<Container>
 		<div class="settings-controls">
-            <input type="text" id="username" value="Username"  bind:value={whusername}>
-        	<textarea rows="4" class="container type-message" style="resize: none;width:calc(100% - (11px * 2) - 100px)"  bind:value={whpost}></textarea>
+            <input bind:value={whusername} type="text" id="username" value="Username">
+        	<textarea bind:value={whpost} rows="4" class="container type-message" style="resize: none;width:calc(100% - (11px * 2) - 100px)"></textarea>
 			<button
 				class="circle settings"
 				on:click={() => {
