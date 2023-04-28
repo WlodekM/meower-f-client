@@ -19,7 +19,38 @@
         })
     }
 	}
-
+	
+	function goto(newPage, resetScroll = true) {
+		if (
+			!$user.name &&
+			newPage !== "home" &&
+			newPage !== "settings" &&
+			newPage !== "changelog" &&
+			newPage !== "search"
+		) {
+			modalPage.set("signup");
+			modalShown.set(true);
+			return;
+		}
+		if (resetScroll) {
+			window.scrollTo(0, 0);
+		}
+		if ($page === "groupchat") {
+			clm.meowerRequest({
+				cmd: "direct",
+				val: {
+					cmd: "set_chat_state",
+					val: {
+						state: 0,
+						chatid: $chatid,
+					},
+				},
+			});
+		}
+		chatid.set("");
+		page.set("blank");
+		tick().then(() => page.set(newPage));
+	}
 </script>
 
 <div class="ModPanel">
