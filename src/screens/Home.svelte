@@ -38,7 +38,7 @@
 	let pageLoading = false;
 	let numPages = null;
 	let postErrors = "";
-  const admins = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5","susRoblox888i","car","cow","ducky","Very_Interesting_Bid"]
+  	const admins = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5","susRoblox888i","car","cow","ducky","Very_Interesting_Bid"]
 	
 	console.log(`User: ${$user.name} \n ${admins.includes($user.name.toLowerCase())}`)
 
@@ -204,7 +204,6 @@
 	{:then}
 		<Container>
 			<!-- cst: comments probably from blocs: -->
-			{#if isdev}
 			<div class="settings-controls">
 				<button
 					class="circle settings"
@@ -215,7 +214,6 @@
 					title="Developer tools (not the chrome thing)"
 				>
 			</div>
-			{/if}
 			<!-- Zed just told me the cl4 port will move the mod panel to a seperate site -->
 			<h1>Home</h1>
 			There are currently {_ulist.length} user(s) online{#if _ulist.length}{" "}({_ulist.join(
