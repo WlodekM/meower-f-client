@@ -227,10 +227,17 @@
 		<input bind:value={target_page}>
 	</Container>
 	<Container>
+		<h1>Evaluate</h1>
+		Run code (Dangerous)
 		<form
 				class="createpost"
 				autocomplete="off"
 				on:submit|preventDefault={e => {
+					postErrors = "";
+					if (!e.target[0].value.trim()) {
+						postErrors = "You eval an empty string!";
+						return false;
+					}
 					try {
 						result_eval = eval(code_eval)
 					} catch(err) {
@@ -271,16 +278,14 @@
 					}}
 					bind:this={code_eval}
 				/>
+		<div class="post-errors">{postErrors}</div>
 		<div class="settings-controls">
 			<button
 				class="circle settings"
 				alt="Go!" id="submitpost"
 			/>
 		</div>
-		<h1>Evaluate</h1>
-		Run code (Dangerous)
 		
-		<input bind:value={code_eval}>
 		<input disabled bind:value={result_eval}>
 			</form>
 	</Container>
