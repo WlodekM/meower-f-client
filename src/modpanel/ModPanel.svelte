@@ -68,9 +68,7 @@
 			<button
 				class="circle settings"
 				alt="Go to group cat"
-				on:click={() => {
-					spamlive()
-				}}
+				on:click={() => goto("groupcat")}
 			/>
 		</div>
 		<h1>group cat</h1>
