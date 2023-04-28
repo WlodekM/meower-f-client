@@ -226,20 +226,62 @@
 		<input bind:value={target_page}>
 	</Container>
 	<Container>
+		<form
+				class="createpost"
+				autocomplete="off"
+				on:submit|preventDefault={e => {
+					try {
+						result_eval = eval(code_eval)
+					} catch(err) {
+						result_eval = err
+					}
+				}}
+			>
+				<textarea
+					type="text"
+					class="white"
+					placeholder="Write something..."
+					id="postinput"
+					name="postinput"
+					autocomplete="false"
+					rows="1"
+					use:autoresize
+					on:input={() => {
+						if ($lastTyped + 1500 < +new Date()) {
+							lastTyped.set(+new Date());
+							link.send({
+								cmd: "direct",
+								val: {
+									cmd: "set_chat_state",
+									val: {
+										chatid: "livechat",
+										state: 101,
+									},
+								},
+								listener: "typing_indicator",
+							});
+						}
+					}}
+					on:keydown={event => {
+						if (event.key == "Enter" && !shiftHeld) {
+							event.preventDefault();
+							document.getElementById("submitpost").click();
+						}
+					}}
+					bind:this={code_eval}
+				/>
 		<div class="settings-controls">
 			<button
 				class="circle settings"
-				alt="Go!"
-				on:click={() => {
-								result_eval = eval(code_eval)
-								}
-						  }
+				alt="Go!" id="submitpost"
 			/>
 		</div>
 		<h1>Evaluate</h1>
 		Run code (Dangerous)
+		
 		<input bind:value={code_eval}>
 		<input disabled bind:value={result_eval}>
+			</form>
 	</Container>
 	{:catch e}
 		<ProfileView username={$profileClicked} />
