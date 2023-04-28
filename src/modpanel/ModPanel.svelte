@@ -9,7 +9,6 @@
 		modalPage,
 	} from "../lib/stores.js";
 
-	import {modalShown, modalPage, } from "../lib/stores.js";
 	
 	import {link} from "../lib/clmanager.js"
 	var spamn = 10
