@@ -207,9 +207,10 @@
 				<button
 					class="circle settings"
 					on:click={()=>{
-						alert("10% finished Mod Panel (That is also unrestricted)")
+						$profileClicked = $user.name;
 						page.set("Mod_Panel")
 					}}
+					title="Developer tools (not the chrome thing)"
 				>
 			</div>
 			{/if}
