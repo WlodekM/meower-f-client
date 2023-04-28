@@ -7,6 +7,7 @@
 		chatid,
 		modalShown,
 		modalPage,
+		lastTyped,
 	} from "../lib/stores.js";
 	
 	import {link} from "../lib/clmanager.js"
