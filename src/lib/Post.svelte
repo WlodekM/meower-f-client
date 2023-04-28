@@ -81,12 +81,19 @@
 
 function format( input ) {
 	let dhout = input
-	dhout = dhout.replaceAll("[b]", "<b>");
-	dhout = dhout.replaceAll("[/b]", "</b>");
-	dhout = dhout.replaceAll("[i]", "<i>");
-	dhout = dhout.replaceAll("[/i]", "</i>");
-	dhout = dhout.replaceAll("[u]", "<ins>");
-	dhout = dhout.replaceAll("[/u]", "</ins>");
+	let formating = {
+		"b":"<b>",
+		"/b":"</b>",
+		"i":"<i>",
+		"/i":"</i>",
+		"u":"<ins>",
+		"/u":"</ins>",
+		"bq":"<blockquote>",
+		"/bq":"</blockquote>",
+	}
+	Object.keys(formating).forEach(function(key) {
+		dhout = dhout.replaceAll(`${"["+key+"]"}`, formating[key]);
+	})
 
 	return dhout
 }
@@ -160,7 +167,7 @@ function deHTML( input ) {
 		if (["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes(pst_auth.toLowerCase())) {
 			creator = true
 		}
-		if (["mikedev","mikedev-test","immaduck"].includes(pst_auth.toLowerCase())) {
+		if (["mikedev","mikedev-test","immaduck","imamduck"].includes(pst_auth.toLowerCase())) {
 			duck = true
 		}
 		
@@ -361,7 +368,7 @@ function deHTML( input ) {
 			<FormattedDate date={post.date} />
 		</div>
 	</div>
-	<p class="post-content">{@html format(deHTML(convertLinks(post.content)))}</p> 
+	<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"
@@ -377,6 +384,16 @@ function deHTML( input ) {
 </Container>
 
 <style>
+	.post-content :global(blockquote) {
+		border-left: 3px solid var(--orange);
+		margin: .25em .25em .25em 0;
+		padding: .25em .25em .25em .625em;
+		background-color: rgba(255,255,255,0.05);
+		padding-right: 0;
+		margin-right: 0.4em;
+		border-radius: 0.15em;
+	}
+	
 	.post-content a {
 		color: #00a8fc !important;
 	}
