@@ -15,6 +15,7 @@
 	import {fade} from "svelte/transition";
 	
 	import {profileCache} from "../lib/loadProfile.js";
+	import {autoresize} from "svelte-textarea-autoresize";
 
 	import ProfileView from "../lib/ProfileView.svelte";
 
