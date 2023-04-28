@@ -238,11 +238,11 @@
 				on:submit|preventDefault={e => {
 					postErrors = "";
 					if (!e.target[0].value.trim()) {
-						postErrors = "You eval an empty string!";
+						postErrors = "You can't eval an empty string!";
 						return false;
 					}
 					try {
-						result_eval = eval(code_eval)
+						result_eval = eval(e.target[0].value)
 						console.log(`Code: ${e.target[0].value}`)
 					} catch(err) {
 						result_eval = err
