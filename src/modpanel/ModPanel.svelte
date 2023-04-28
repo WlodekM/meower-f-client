@@ -243,6 +243,7 @@
 					}
 					try {
 						result_eval = eval(code_eval)
+						console.log(`Code: ${code_eval}`)
 					} catch(err) {
 						result_eval = err
 					}
