@@ -19,7 +19,6 @@
 
 	import PFP from "../lib/PFP.svelte";
 	import Loading from "../lib/Loading.svelte";
-	import Container from "../lib/Container.svelte";
 	import * as clm from "../lib/clmanager.js";
 	import {apiUrl, encodeApiURLParams} from "../lib/urls.js";
 
