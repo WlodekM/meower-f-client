@@ -8,11 +8,11 @@
 		modalShown,
 		modalPage,
 	} from "../lib/stores.js";
-
 	
 	import {link} from "../lib/clmanager.js"
 	import {tick} from "svelte";
 	import {fade} from "svelte/transition";
+	
 	import {profileCache} from "../lib/loadProfile.js";
 
 	import ProfileView from "../lib/ProfileView.svelte";
@@ -54,6 +54,7 @@
 	}
 
 	let pfpOverflow = false;
+	var target_page = "groupcat"
 	$: {
 		const pfp = $user.pfp_data;
 		let hiddenpfps = [-1, 500, 101, 102]
@@ -178,6 +179,20 @@
 		</div>
 		<h1>Set pfp</h1>
 		<input value={pfp_temp}>
+	</Container>
+	<Container>
+		<div class="settings-controls">
+			<button
+				class="circle settings"
+				alt="Go!"
+				on:click={() => {
+								goto(target_page)
+								}
+						  }
+			/>
+		</div>
+		<h1>Go to page</h1>
+		<input value={target_page}>
 	</Container>
 	{:catch e}
 		<ProfileView username={$profileClicked} />
