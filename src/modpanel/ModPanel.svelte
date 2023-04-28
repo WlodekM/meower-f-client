@@ -168,9 +168,7 @@
 			<button
 				class="circle settings"
 				alt="Set pfp"
-				on:click={pfpSwitcher = false;
-								$user.pfp_data = pfp_temp;
-								save()}
+				on:click={() => pfpSwitcher = false;$user.pfp_data = pfp_temp;save()}
 			/>
 		</div>
 		<h1>Set pfp</h1>
