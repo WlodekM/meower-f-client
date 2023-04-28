@@ -77,6 +77,7 @@
         })
     }
 	}
+	let postErrors = "";
 	
 	function goto(newPage, resetScroll = true) {
 		if (
