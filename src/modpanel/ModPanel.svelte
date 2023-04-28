@@ -11,6 +11,8 @@
 
 	
 	import {link} from "../lib/clmanager.js"
+	import {tick} from "svelte";
+	import {fade} from "svelte/transition";
 	var spamn = 10
 	function spamlive() {
 		for (var count = 0; count < spamn; count++) {
