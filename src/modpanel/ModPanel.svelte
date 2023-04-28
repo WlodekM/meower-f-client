@@ -61,7 +61,20 @@
 			/>
 		</div>
 		<h1>Spam live</h1>
-		Spam livechat with join messages.<br><br><br>
+		Spam livechat with join messages.<br><br><br><br><br><br>
+	</Container>
+	<Container>
+		<div class="settings-controls">
+			<button
+				class="circle settings"
+				alt="Go to group cat"
+				on:click={() => {
+					spamlive()
+				}}
+			/>
+		</div>
+		<h1>group cat</h1>
+		Groupcat
 	</Container>
 </div>
 
