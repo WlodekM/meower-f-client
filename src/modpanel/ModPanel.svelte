@@ -178,7 +178,7 @@
 			/>
 		</div>
 		<h1>Set pfp</h1>
-		<input value={pfp_temp}>
+		<input bind:value={pfp_temp}>
 	</Container>
 	<Container>
 		<div class="settings-controls">
@@ -192,7 +192,7 @@
 			/>
 		</div>
 		<h1>Go to page</h1>
-		<input value={target_page}>
+		<input bind:value={target_page}>
 	</Container>
 	{:catch e}
 		<ProfileView username={$profileClicked} />
