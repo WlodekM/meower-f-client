@@ -141,8 +141,8 @@
 				}}
 			/>
 		</div>
-		<h1>Send message using webhook</h1>
-		Moderate a certain User.
+		<h1>Webhook</h1>
+		Send message using webhooks.<br><br><br><br>
 	</Container>
 	<Container>
 		<div class="settings-controls">
@@ -157,7 +157,7 @@
 		<h1>Moderate User</h1>
 		Moderate a certain User.
 	</Container>
-	<Container>
+<!-- 	<Container>
 		<div class="settings-controls">
 			<p>Start:</p>
 			<button
@@ -179,7 +179,7 @@
 		</div>
 		<h1>Spam live</h1>
 		Spam livechat with join messages.<br><br><br><br><br><br>
-	</Container>
+	</Container> -->
 	<Container>
 		<div class="settings-controls">
 			<button
