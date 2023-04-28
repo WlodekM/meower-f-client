@@ -127,8 +127,8 @@
 
 <div class="ModPanel">
 	<Container>
-		<h1>Moderation Panel</h1>
-		Hello everyone its THE MOD PANEL HERE back with another youtube video!!!!!!
+		<h1>Developer tools</h1>
+		Hello everyone its THE DEV TOOLS HERE back with another youtube video!!!!!!
 	</Container>
 	<Container style="height: 150px;">
 		<div class="settings-controls">
