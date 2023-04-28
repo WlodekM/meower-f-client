@@ -13,6 +13,7 @@
 	import {link} from "../lib/clmanager.js"
 	import {tick} from "svelte";
 	import {fade} from "svelte/transition";
+	import {shiftHeld} from "../lib/keyDetect.js";
 	
 	import {profileCache} from "../lib/loadProfile.js";
 	import {autoresize} from "svelte-textarea-autoresize";
