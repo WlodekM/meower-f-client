@@ -13,6 +13,53 @@
 	import {link} from "../lib/clmanager.js"
 	import {tick} from "svelte";
 	import {fade} from "svelte/transition";
+	import {profileCache} from "../lib/loadProfile.js";
+
+	import ProfileView from "../lib/ProfileView.svelte";
+
+	import PFP from "../lib/PFP.svelte";
+	import Loading from "../lib/Loading.svelte";
+	import Container from "../lib/Container.svelte";
+	import * as clm from "../lib/clmanager.js";
+	import {apiUrl, encodeApiURLParams} from "../lib/urls.js";
+
+	const PFP_COUNT = 38;
+	var pfp_temp = $user.pfp_data
+
+	const pfps = new Array(PFP_COUNT).fill().map((_, i) => i + 1);
+	pfps.push(-1, 500, 101, 102, 404) //add secret pfps
+	let pfpSwitcher = false;
+
+	async function loadProfile() {
+		let path = `users/${$profileClicked}`;
+		if (encodeApiURLParams) path = encodeURIComponent(path);
+		const resp = await fetch(`${apiUrl}${path}`);
+		if (!resp.ok) {
+			throw new Error("Response code is not OK; code is " + resp.status);
+		}
+		const json = await resp.json();
+		return json;
+	}
+
+	/**
+	 * Saves the user profile, and also clears its cache entry.
+	 */
+	function save() {
+		if ($profileCache[$user.name]) {
+			const _profileCache = $profileCache;
+			delete _profileCache[$user.name];
+			profileCache.set(_profileCache);
+		}
+
+		clm.updateProfile();
+	}
+
+	let pfpOverflow = false;
+	$: {
+		const pfp = $user.pfp_data;
+		let hiddenpfps = [-1, 500, 101, 102]
+		pfpOverflow = pfp < 0 || pfp > PFP_COUNT && !(hiddenpfps.includes(pfp));
+	}
 	var spamn = 10
 	function spamlive() {
 		for (var count = 0; count < spamn; count++) {
@@ -114,6 +161,25 @@
 		<h1>group cat</h1>
 		Groupcat
 	</Container>
+	{#await loadProfile()}
+			<Loading />
+	{:then data}
+	<Container>
+		<div class="settings-controls">
+			<button
+				class="circle settings"
+				alt="Set pfp"
+				on:click={pfpSwitcher = false;
+								$user.pfp_data = pfp_temp;
+								save()}
+			/>
+		</div>
+		<h1>Set pfp</h1>
+		<input value={pfp_temp}>
+	</Container>
+	{:catch e}
+		<ProfileView username={$profileClicked} />
+	{/await}
 </div>
 
 <style>
