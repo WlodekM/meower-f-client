@@ -1,5 +1,13 @@
 <script>
 	import Container from "../lib/Container.svelte";
+	import {
+		mainPage as page,
+		user,
+		profileClicked,
+		chatid,
+		modalShown,
+		modalPage,
+	} from "../lib/stores.js";
 
 	import {modalShown, modalPage, } from "../lib/stores.js";
 	
