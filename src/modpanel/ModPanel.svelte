@@ -107,12 +107,42 @@
 		page.set("blank");
 		tick().then(() => page.set(newPage));
 	}
+	var whusername = "User"
+	var whpost = ""
+	function whsend() {
+		console.log(`${whusername}:${whpost}`)
+		fetch('https://webhooks.meower.org/post/home', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ "post": whpost,"username":whusername })
+		})
+		.then(response => response.text())
+		.then(response => console.log(response))
+	}
+
 </script>
 
 <div class="ModPanel">
 	<Container>
 		<h1>Moderation Panel</h1>
 		Hello everyone its THE MOD PANEL HERE back with another youtube video!!!!!!
+	</Container>
+	<Container style="height: 150px;">
+		<div class="settings-controls">
+            <input bind:value={whusername} type="text" id="username">
+        	<textarea bind:value={whpost} rows="4" class="container type-message" style="resize: none;width:calc(100% - (11px * 2) - 100px)"></textarea>
+			<button
+				class="circle settings"
+				on:click={() => {
+					whsend()
+				}}
+			/>
+		</div>
+		<h1>Send message using webhook</h1>
+		Moderate a certain User.
 	</Container>
 	<Container>
 		<div class="settings-controls">

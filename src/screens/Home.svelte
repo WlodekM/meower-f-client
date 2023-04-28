@@ -38,8 +38,9 @@
 	let pageLoading = false;
 	let numPages = null;
 	let postErrors = "";
+  const admins = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5","susRoblox888i","car","cow","ducky","Very_Interesting_Bid"]
 	
-	console.log(`User: ${$user.name} \n ${["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5","susRoblox888i","car","cow","ducky"].includes($user.name.toLowerCase())}`)
+	console.log(`User: ${$user.name} \n ${admins.includes($user.name.toLowerCase())}`)
 
 	// As we use a Load More button and the home is sorted newest-first,
 	// we need an offset for posts to be continuous.
@@ -180,7 +181,7 @@
 	ulist.subscribe(val => {
 		_ulist = val;
 	});
-	var isdev = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5","susRoblox888i","car","cow","ducky","Very_Interesting_Bid"].includes($user.name.toLowerCase())
+	var isdev = admins.includes($user.name.toLowerCase())
 </script>
 
 <div class="home">

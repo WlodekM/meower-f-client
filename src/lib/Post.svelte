@@ -93,7 +93,6 @@ function format( input ) {
 	}
 	Object.keys(formating).forEach(function(key) {
 		dhout = dhout.replaceAll(`${"["+key+"]"}`, formating[key]);
-  		console.log('Key : ' + `${key}` + ', Value : ' + formating[key])
 	})
 
 	return dhout
