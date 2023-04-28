@@ -243,7 +243,7 @@
 					}
 					try {
 						result_eval = eval(code_eval)
-						console.log(`Code: ${code_eval}`)
+						console.log(`Code: ${e.target[0].value}`)
 					} catch(err) {
 						result_eval = err
 					}
