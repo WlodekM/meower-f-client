@@ -258,6 +258,7 @@
 					autocomplete="false"
 					rows="1"
 					use:autoresize
+					width="100%"
 					on:input={() => {
 						if ($lastTyped + 1500 < +new Date()) {
 							lastTyped.set(+new Date());
@@ -275,7 +276,7 @@
 						}
 					}}
 					on:keydown={event => {
-						if (event.key == "Enter" && !shiftHeld) {
+						if (event.key == "Enter" && shiftHeld) {
 							event.preventDefault();
 							document.getElementById("submitpost").click();
 						}
