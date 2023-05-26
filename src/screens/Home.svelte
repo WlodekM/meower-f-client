@@ -38,7 +38,7 @@
 	let pageLoading = false;
 	let numPages = null;
 	let postErrors = "";
-  	const admins = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5","susRoblox888i","car","cow","ducky","Very_Interesting_Bid"]
+  const admins = ["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5","susRoblox888i","car","cow","ducky","Very_Interesting_Bid"]
 	
 	console.log(`User: ${$user.name} \n ${admins.includes($user.name.toLowerCase())}`)
 
