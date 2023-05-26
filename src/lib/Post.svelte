@@ -29,6 +29,7 @@
 	let bridged = false;
 	let webhook = false;
 	let creator = false;
+	let frien = false;
 	let duck = false;
 	let revower = false;
 
@@ -167,6 +168,11 @@ function deHTML( input ) {
 		if (["wlodekm","wlodekm2","wlodekm3","wlodekm4","wlodekm5"].includes(pst_auth.toLowerCase())) {
 			creator = true
 		}
+    
+		if (["3r1s_s"].includes(pst_auth.toLowerCase())) {
+			frien = true
+		}
+    
 		if (["mikedev","mikedev-test","immaduck","imamduck"].includes(pst_auth.toLowerCase())) {
 			duck = true
 		}
@@ -347,6 +353,13 @@ function deHTML( input ) {
 					<Badge
 						text="DUCK"
 						title="Quack!"
+					/>
+				{/if}
+				
+				{#if frien}
+					<Badge
+						text="Frien :>"
+						title="This post was made by a user that is a friend of the creator of F client."
 					/>
 				{/if}
 				

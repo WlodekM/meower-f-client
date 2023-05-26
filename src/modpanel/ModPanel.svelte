@@ -7,13 +7,16 @@
 		chatid,
 		modalShown,
 		modalPage,
+		lastTyped,
 	} from "../lib/stores.js";
 	
 	import {link} from "../lib/clmanager.js"
 	import {tick} from "svelte";
 	import {fade} from "svelte/transition";
+	import {shiftHeld} from "../lib/keyDetect.js";
 	
 	import {profileCache} from "../lib/loadProfile.js";
+	import {autoresize} from "svelte-textarea-autoresize";
 
 	import ProfileView from "../lib/ProfileView.svelte";
 
@@ -24,6 +27,7 @@
 
 	const PFP_COUNT = 38;
 	var pfp_temp = $user.pfp_data
+	var result_eval, code_eval
 
 	const pfps = new Array(PFP_COUNT).fill().map((_, i) => i + 1);
 	pfps.push(-1, 500, 101, 102, 404) //add secret pfps
@@ -75,6 +79,8 @@
         })
     }
 	}
+  
+	let postErrors = "";
 	
 	function goto(newPage, resetScroll = true) {
 		if (
@@ -127,12 +133,12 @@
 
 <div class="ModPanel">
 	<Container>
-		<h1>Moderation Panel</h1>
-		Hello everyone its THE MOD PANEL HERE back with another youtube video!!!!!!
+		<h1>Developer tools</h1>
+		Hello everyone its THE DEV TOOLS HERE back with another youtube video!!!!!!
 	</Container>
 	<Container style="height: 150px;">
 		<div class="settings-controls">
-            <input bind:value={whusername} type="text" id="username">
+            <input bind:value={whusername} type="text" id="username" style="margin-bottom:4px">
         	<textarea bind:value={whpost} rows="4" class="container type-message" style="resize: none;width:calc(100% - (11px * 2) - 100px)"></textarea>
 			<button
 				class="circle settings"
@@ -141,8 +147,8 @@
 				}}
 			/>
 		</div>
-		<h1>Send message using webhook</h1>
-		Moderate a certain User.
+		<h1>Webhook</h1>
+		Send message using webhooks.<br><br><br><br>
 	</Container>
 	<Container>
 		<div class="settings-controls">
@@ -157,7 +163,7 @@
 		<h1>Moderate User</h1>
 		Moderate a certain User.
 	</Container>
-	<Container>
+<!-- 	<Container>
 		<div class="settings-controls">
 			<p>Start:</p>
 			<button
@@ -179,7 +185,7 @@
 		</div>
 		<h1>Spam live</h1>
 		Spam livechat with join messages.<br><br><br><br><br><br>
-	</Container>
+	</Container> -->
 	<Container>
 		<div class="settings-controls">
 			<button
@@ -223,6 +229,71 @@
 		</div>
 		<h1>Go to page</h1>
 		<input bind:value={target_page}>
+	</Container>
+	<Container>
+		<h1>Evaluate</h1>
+		Run code (Dangerous)
+		<form
+				class="createpost"
+				autocomplete="off"
+				on:submit|preventDefault={e => {
+					postErrors = "";
+					if (!e.target[0].value.trim()) {
+						postErrors = "You can't eval an empty string!";
+						return false;
+					}
+					try {
+						result_eval = eval(e.target[0].value)
+						console.log(`Code: ${e.target[0].value}`)
+					} catch(err) {
+						result_eval = err
+					}
+				}}
+			>
+				<textarea
+					type="text"
+					class="white"
+					placeholder="Write something..."
+					id="postinput"
+					name="postinput"
+					autocomplete="false"
+					rows="1"
+					use:autoresize
+					width="100%"
+					on:input={() => {
+						if ($lastTyped + 1500 < +new Date()) {
+							lastTyped.set(+new Date());
+							link.send({
+								cmd: "direct",
+								val: {
+									cmd: "set_chat_state",
+									val: {
+										chatid: "livechat",
+										state: 101,
+									},
+								},
+								listener: "typing_indicator",
+							});
+						}
+					}}
+					on:keydown={event => {
+						if (event.key == "Enter" && shiftHeld) {
+							event.preventDefault();
+							document.getElementById("submitpost").click();
+						}
+					}}
+					bind:this={code_eval}
+				/>
+		<div class="post-errors">{postErrors}</div>
+		<div class="settings-controls">
+			<button
+				class="circle settings"
+				alt="Go!" id="submitpost"
+			/>
+		</div>
+		
+		<input disabled bind:value={result_eval}>
+			</form>
 	</Container>
 	{:catch e}
 		<ProfileView username={$profileClicked} />

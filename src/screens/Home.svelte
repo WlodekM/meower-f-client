@@ -204,7 +204,6 @@
 	{:then}
 		<Container>
 			<!-- cst: comments probably from blocs: -->
-			{#if isdev}
 			<div class="settings-controls">
 				<button
 					class="circle settings"
@@ -215,7 +214,6 @@
 					title="Developer tools (not the chrome thing)"
 				>
 			</div>
-			{/if}
 			<!-- Zed just told me the cl4 port will move the mod panel to a seperate site -->
 			<h1>Home</h1>
 			There are currently {_ulist.length} user(s) online{#if _ulist.length}{" "}({_ulist.join(
@@ -286,7 +284,7 @@
 					id="postinput"
 					name="postinput"
 					autocomplete="false"
-					maxlength="360"
+					maxlength="4000"
 					rows="1"
 					use:autoresize
 					on:input={() => {
