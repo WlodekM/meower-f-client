@@ -268,7 +268,7 @@
 			{:else}
 				{#each posts as post (post.id)}
 					<div
-						transition:fly|local={{y: -50, duration: 250}}
+						transition:fly|local={{y: 50, duration: 250}}
 						animate:flip={{duration: 250}}
 					>
 						<Post {post} input={postInput} />
