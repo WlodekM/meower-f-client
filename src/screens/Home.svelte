@@ -60,10 +60,10 @@
 	function GetDir() {
 		return(localStorage.getItem('dir'))
 	}
+	if(GetDir() == null) {StoreDir("up")}
 	var currentdir = GetDir()
 	var isUp = (currentdir == "up")
 	var isDown = (currentdir == "down")
-	if(GetDir() == null) {StoreDir("up")}
 	async function loadPage(page) {
 		pageLoading = true;
 
