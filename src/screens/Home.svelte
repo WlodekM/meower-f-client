@@ -196,7 +196,7 @@
 		_ulist = val;
 	});
 	var isdev = admins.includes($user.name.toLowerCase())
-	document.addEventListener("DOMContentLoaded", function(){
+	function scrolltobottom(){
 		document.getElementById("anchor").scrollIntoView();
 	});
 </script>
@@ -402,7 +402,7 @@
 		</Container>
 	{/await}
 	{#if isDown}
-  		<div id="anchor"></div>
+  		<div id="anchor" onload="scrolltobottom()"></div>
 	{/if}
 </div>
 {#if isDown}
