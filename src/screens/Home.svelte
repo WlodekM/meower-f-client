@@ -3,6 +3,11 @@
 	It features live post updates and a load more button which is pretty nice.
 -->
 <script>
+    const scrollToBottom = function() {
+        window.scrollTo(0, document.querySelector(".home").scrollHeight);
+    }
+</script>
+<script>
 	import {
 		authHeader,
 		user,
@@ -26,6 +31,7 @@
 
 	import {fly} from "svelte/transition";
 	import {flip} from "svelte/animate";
+	
 
 	// comments probably from blocs:
 	// import AddMember from "src/lib/modals/AddMember.svelte";
@@ -65,6 +71,7 @@
 	var isUp = (currentdir == "up")
 	var isDown = (currentdir == "down")
 	async function loadPage(page) {
+		
 		pageLoading = true;
 
 		if (page === undefined) {
@@ -130,6 +137,7 @@
 		posts = posts;
 		pageLoading = false;
 		if(isDown) {posts = posts.reverse()}
+		if(page == 0) {scrollToBottom()}
 		return posts;
 	}
 
