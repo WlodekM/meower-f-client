@@ -196,6 +196,7 @@
 		_ulist = val;
 	});
 	var isdev = admins.includes($user.name.toLowerCase())
+      window.scrollTo(0, document.body.scrollHeight);
 </script>
 
 <div class="home">
