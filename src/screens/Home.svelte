@@ -54,6 +54,9 @@
 	 * @param {number} [page] The page to load. If not present, simply clears the posts.
 	 * @returns {Promise<array>} The posts array.
 	 */
+	function GetDir() {
+		return(localStorage.getItem('dir'))
+	}
 	var currentdir = GetDir()
 	var isUp = (currentdir == "up")
 	var isDown = (currentdir == "down")
@@ -190,9 +193,6 @@
 		_ulist = val;
 	});
 	var isdev = admins.includes($user.name.toLowerCase())
-	function GetDir() {
-		return(localStorage.getItem('dir'))
-	}
 </script>
 
 <div class="home">
