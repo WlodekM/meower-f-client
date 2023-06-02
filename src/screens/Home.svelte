@@ -54,6 +54,9 @@
 	 * @param {number} [page] The page to load. If not present, simply clears the posts.
 	 * @returns {Promise<array>} The posts array.
 	 */
+	function StoreDir(fonttostore) {
+		localStorage.setItem('dir', fonttostore)
+	}
 	function GetDir() {
 		return(localStorage.getItem('dir'))
 	}
