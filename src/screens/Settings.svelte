@@ -102,8 +102,8 @@
 		/>
 	</div>
 
-	<h2>Theme</h2>
-	The chat direction is currently set to null.
+	<h2>Chat direction</h2>
+	The chat direction is currently set to ${currentdir}.
 </Container>
 <Container>
 	<div class="settings-controls">
