@@ -133,10 +133,13 @@
 	 * @param {object} post
 	 */
 	function addPost(post) {
+// 		WlodekM: idk how tf this code works so im going to reverse 2 times
+		if(isDown) {posts = posts.reverse()}
 		posts.unshift({
 			id: id++,
 			...post,
 		});
+		if(isDown) {posts = posts.reverse()}
 		posts = posts;
 	}
 
