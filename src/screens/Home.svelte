@@ -258,13 +258,6 @@
 					</button>
 				{/if}
 			</div>
-			{:catch error}
-				<Container>
-					<h1>F client home</h1>
-					Error loading posts. Please try again.
-					<pre><code>{error}</code></pre>
-				</Container>
-			{/await}
 		{/if}
 		<!-- I think we discussed that guest posting will not be in the official client, due to moderation reasons -->
 		{#if $user.name}
@@ -391,14 +384,14 @@
 					</button>
 				{/if}
 			</div>
-			{:catch error}
-				<Container>
-					<h1>F client home</h1>
-					Error loading posts. Please try again.
-					<pre><code>{error}</code></pre>
-				</Container>
-			{/await}
 		{/if}
+	{:catch error}
+		<Container>
+			<h1>F client home</h1>
+			Error loading posts. Please try again.
+			<pre><code>{error}</code></pre>
+		</Container>
+	{/await}
 </div>
 
 <style>
