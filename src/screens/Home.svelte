@@ -54,6 +54,10 @@
 	 * @param {number} [page] The page to load. If not present, simply clears the posts.
 	 * @returns {Promise<array>} The posts array.
 	 */
+	var currentdir = GetDir()
+	var isUp = (currentdir == "up")
+	var isDown = (currentdir == "down")
+	if(GetDir() == null) {StoreDir("up")}
 	async function loadPage(page) {
 		pageLoading = true;
 
@@ -119,6 +123,7 @@
 		}
 		posts = posts;
 		pageLoading = false;
+		if(isDown) {posts = posts.reverse()}
 		return posts;
 	}
 
@@ -185,11 +190,6 @@
 	function GetDir() {
 		return(localStorage.getItem('dir'))
 	}
-	if(GetDir() == null) {StoreDir("up")}
-	var currentdir = GetDir()
-	var isUp = (currentdir == "up")
-	var isDown = (currentdir == "down")
-	if(isDown) {posts = posts.reverse()}
 </script>
 
 <div class="home">
@@ -230,6 +230,18 @@
 		</Container>
 		{#if isDown}
 			<TypingIndicator />
+			<div class="center">
+				{#if pageLoading}
+					<Loading />
+				{:else if numPages && numPages > pagesLoaded}
+					<button
+						class="load-more"
+						on:click={() => loadPage(pagesLoaded + 1)}
+					>
+						Load More
+					</button>
+				{/if}
+			</div>
 			{#if posts.length < 1}
 				{#if $user.name}
 					No posts here. Check back later or be the first to post!
@@ -246,18 +258,6 @@
 					</div>
 				{/each}
 			{/if}
-			<div class="center">
-				{#if pageLoading}
-					<Loading />
-				{:else if numPages && numPages > pagesLoaded}
-					<button
-						class="load-more"
-						on:click={() => loadPage(pagesLoaded + 1)}
-					>
-						Load More
-					</button>
-				{/if}
-			</div>
 		{/if}
 		<!-- I think we discussed that guest posting will not be in the official client, due to moderation reasons -->
 		{#if $user.name}
