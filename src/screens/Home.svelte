@@ -182,6 +182,14 @@
 		_ulist = val;
 	});
 	var isdev = admins.includes($user.name.toLowerCase())
+	function GetDir() {
+		return(localStorage.getItem('dir'))
+	}
+	if(GetDir() == null) {StoreDir("up")}
+	var currentdir = GetDir()
+	var isUp = (currentdir == "up")
+	var isDown = (currentdir == "down")
+	if(isDown) {posts = posts.reverse()}
 </script>
 
 <div class="home">
@@ -220,6 +228,44 @@
 					", "
 				)}){/if}.
 		</Container>
+		{#if isDown}
+			<TypingIndicator />
+			{#if posts.length < 1}
+				{#if $user.name}
+					No posts here. Check back later or be the first to post!
+				{:else}
+					No posts here. Check back later!
+				{/if}
+			{:else}
+				{#each posts as post (post.id)}
+					<div
+						transition:fly|local={{y: -50, duration: 250}}
+						animate:flip={{duration: 250}}
+					>
+						<Post {post} input={postInput} />
+					</div>
+				{/each}
+			{/if}
+			<div class="center">
+				{#if pageLoading}
+					<Loading />
+				{:else if numPages && numPages > pagesLoaded}
+					<button
+						class="load-more"
+						on:click={() => loadPage(pagesLoaded + 1)}
+					>
+						Load More
+					</button>
+				{/if}
+			</div>
+			{:catch error}
+				<Container>
+					<h1>F client home</h1>
+					Error loading posts. Please try again.
+					<pre><code>{error}</code></pre>
+				</Container>
+			{/await}
+		{/if}
 		<!-- I think we discussed that guest posting will not be in the official client, due to moderation reasons -->
 		{#if $user.name}
 			<form
@@ -315,42 +361,44 @@
 			</form>
 		{/if}
 		<div class="post-errors">{postErrors}</div>
-		<TypingIndicator />
-		{#if posts.length < 1}
-			{#if $user.name}
-				No posts here. Check back later or be the first to post!
+	{#if isUp}
+			<TypingIndicator />
+			{#if posts.length < 1}
+				{#if $user.name}
+					No posts here. Check back later or be the first to post!
+				{:else}
+					No posts here. Check back later!
+				{/if}
 			{:else}
-				No posts here. Check back later!
+				{#each posts as post (post.id)}
+					<div
+						transition:fly|local={{y: -50, duration: 250}}
+						animate:flip={{duration: 250}}
+					>
+						<Post {post} input={postInput} />
+					</div>
+				{/each}
 			{/if}
-		{:else}
-			{#each posts as post (post.id)}
-				<div
-					transition:fly|local={{y: -50, duration: 250}}
-					animate:flip={{duration: 250}}
-				>
-					<Post {post} input={postInput} />
-				</div>
-			{/each}
+			<div class="center">
+				{#if pageLoading}
+					<Loading />
+				{:else if numPages && numPages > pagesLoaded}
+					<button
+						class="load-more"
+						on:click={() => loadPage(pagesLoaded + 1)}
+					>
+						Load More
+					</button>
+				{/if}
+			</div>
+			{:catch error}
+				<Container>
+					<h1>F client home</h1>
+					Error loading posts. Please try again.
+					<pre><code>{error}</code></pre>
+				</Container>
+			{/await}
 		{/if}
-		<div class="center">
-			{#if pageLoading}
-				<Loading />
-			{:else if numPages && numPages > pagesLoaded}
-				<button
-					class="load-more"
-					on:click={() => loadPage(pagesLoaded + 1)}
-				>
-					Load More
-				</button>
-			{/if}
-		</div>
-	{:catch error}
-		<Container>
-			<h1>F client home</h1>
-			Error loading posts. Please try again.
-			<pre><code>{error}</code></pre>
-		</Container>
-	{/await}
 </div>
 
 <style>
