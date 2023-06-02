@@ -395,9 +395,17 @@
 			<pre><code>{error}</code></pre>
 		</Container>
 	{/await}
+  <div id="anchor"></div>
 </div>
 
 <style>
+	.home * {
+	  overflow-anchor: none;
+	}
+	#anchor {
+	  overflow-anchor: auto;
+	  height: 1px;
+	}
 	.createpost {
 		display: flex;
 		margin-bottom: 0.5em;
