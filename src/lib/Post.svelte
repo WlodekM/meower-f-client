@@ -383,7 +383,6 @@ function deHTML( input ) {
 
 		</div>
 	</div>
-	</div>
 	<div class="post-text">
 		<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
 	</div>
