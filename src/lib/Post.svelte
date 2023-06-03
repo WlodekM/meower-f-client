@@ -380,8 +380,7 @@ function deHTML( input ) {
 			</div>
 
 		</div>
-	</div>
-	<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
+		<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
 	<div class="post-images">
 		{#each images as { title, url }}
 			<a href={url} target="_blank"
@@ -393,6 +392,7 @@ function deHTML( input ) {
 				/></a
 			>
 		{/each}
+	</div>
 	</div>
 </Container>
 
