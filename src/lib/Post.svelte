@@ -376,9 +376,9 @@ function deHTML( input ) {
 					<Badge text="BOT" title="This bot has not been verified" />
 				{/if}
 				-->
+			<FormattedDate date={post.date} />
 			</div>
 
-			<FormattedDate date={post.date} />
 		</div>
 	</div>
 	<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
