@@ -210,7 +210,7 @@ function deHTML( input ) {
 </script>
 
 <Container>
-	<div class="post-author-pfp">
+	<div class="post-header">
 		<div class="settings-controls">
 			{#if buttons && $user.name && $chatid !== "livechat" && post.user !== "Server"}
 				{#if input && post.user !== "Notification" && post.user !== "Announcement"}
@@ -315,8 +315,6 @@ function deHTML( input ) {
 			
 		</button>
 			{/if}
-	</div>
-	<div class="post-header">
 		<div class="creatordate">
 			<div class="creator">
 				<h2>
