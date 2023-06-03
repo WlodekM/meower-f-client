@@ -3,11 +3,6 @@
 	It features live post updates and a load more button which is pretty nice.
 -->
 <script>
-    const scrollToBottom = function() {
-        window.scrollTo(0, document.querySelector(".home").scrollHeight);
-    }
-</script>
-<script>
 	import {
 		authHeader,
 		user,
