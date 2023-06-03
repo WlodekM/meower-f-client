@@ -380,21 +380,21 @@ function deHTML( input ) {
 			</div>
 
 		</div>
-		<div class="post-text">
-			<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
-		</div>
-		<div class="post-images">
-			{#each images as { title, url }}
-				<a href={url} target="_blank"
-					><img
-						src={url}
-						alt={title}
-						title="{title} ({url})"
-						class="post-image"
-					/></a
-				>
-			{/each}
-		</div>
+	</div>
+	<div class="post-text">
+		<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
+	</div>
+	<div class="post-images">
+		{#each images as { title, url }}
+			<a href={url} target="_blank"
+				><img
+					src={url}
+					alt={title}
+					title="{title} ({url})"
+					class="post-image"
+				/></a
+			>
+		{/each}
 	</div>
 </Container>
 
@@ -433,6 +433,9 @@ function deHTML( input ) {
 
 	.creatordate {
 		margin-left: 0.5em;
+	}
+	.post-text, .post-images {
+		margin-left: calc(0.5em + 75px);
 	}
 	.creator {
 		display: flex;
