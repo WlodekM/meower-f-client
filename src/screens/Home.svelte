@@ -246,7 +246,6 @@
 				)}){/if}.
 		</Container>
 		{#if isDown}
-			<TypingIndicator />
 			<div class="center">
 				{#if pageLoading}
 					<Loading />
@@ -275,6 +274,7 @@
 					</div>
 				{/each}
 			{/if}
+			<TypingIndicator />
 		{/if}
 		<!-- I think we discussed that guest posting will not be in the official client, due to moderation reasons -->
 		{#if $user.name}
