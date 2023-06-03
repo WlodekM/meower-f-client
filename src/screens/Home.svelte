@@ -206,7 +206,7 @@
 	var isdev = admins.includes($user.name.toLowerCase())
 	function scrolltobottom(){
 		document.getElementById("anchor").scrollIntoView();
-	});
+	};
 </script>
 
 <div class="home">
