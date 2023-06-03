@@ -380,19 +380,21 @@ function deHTML( input ) {
 			</div>
 
 		</div>
-		<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
-	<div class="post-images">
-		{#each images as { title, url }}
-			<a href={url} target="_blank"
-				><img
-					src={url}
-					alt={title}
-					title="{title} ({url})"
-					class="post-image"
-				/></a
-			>
-		{/each}
-	</div>
+		<div class="post-text">
+			<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
+		</div>
+		<div class="post-images">
+			{#each images as { title, url }}
+				<a href={url} target="_blank"
+					><img
+						src={url}
+						alt={title}
+						title="{title} ({url})"
+						class="post-image"
+					/></a
+				>
+			{/each}
+		</div>
 	</div>
 </Container>
 
