@@ -33,6 +33,14 @@
 
 		await new Promise(resolve => link.once("connected", resolve));
 	}
+	function StoreDir(fonttostore) {
+		localStorage.setItem('dir', fonttostore)
+	}
+	function GetDir() {
+		return(localStorage.getItem('dir'))
+	}
+	var currentdir = GetDir()
+	if(GetDir() == null) {StoreDir("up")}
 
 	let rememberMe = false;
 	let acceptTerms = false;

@@ -13,6 +13,14 @@
 		return(localStorage.getItem('font'))
 	}
 	var currentfont = GetFont()
+	function StoreDir(fonttostore) {
+		localStorage.setItem('dir', fonttostore)
+	}
+	function GetDir() {
+		return(localStorage.getItem('dir'))
+	}
+	if(GetDir() == null) {StoreDir("up")}
+	var currentdir = GetDir()
 </script>
 
 <!--
@@ -78,6 +86,24 @@
 
 	<h2>Theme</h2>
 	The theme is currently set to {$user.theme}.
+</Container>
+<Container>
+	<div class="settings-controls">
+		<button
+			class="circle settings"
+			on:click={() => {
+				const _user = {}
+				_user.dir = GetDir()
+				_user.dir = _user.dir == "up" ? "down" : "up"
+				StoreDir(_user.dir)
+				currentdir = GetDir()
+				clm.updateProfile();
+			}}
+		/>
+	</div>
+
+	<h2>Chat direction</h2>
+	The chat direction is currently set to ${currentdir}.
 </Container>
 <Container>
 	<div class="settings-controls">

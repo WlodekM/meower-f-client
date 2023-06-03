@@ -37,6 +37,13 @@
 		spinner,
 	} from "./lib/stores.js";
 	import {tick} from "svelte";
+	function StoreFont(fonttostore) {
+		localStorage.setItem('font', fonttostore)
+	}
+	function GetFont() {
+		return(localStorage.getItem('font'))
+	}
+	if(GetFont() == null) {StoreFont("default")}
 </script>
 
 <main
@@ -260,6 +267,12 @@
 		--foreground-orange: white;
 	}
 
+	#main.font-null {
+		font-family: Simvoni, sans-serif ;
+	}
+	#main.font- {
+		font-family: Simvoni, sans-serif ;
+	}
 	#main.font-undefined {
 		font-family: Simvoni, sans-serif ;
 	}

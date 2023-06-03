@@ -26,6 +26,7 @@
 
 	import {fly} from "svelte/transition";
 	import {flip} from "svelte/animate";
+	
 
 	// comments probably from blocs:
 	// import AddMember from "src/lib/modals/AddMember.svelte";
@@ -54,7 +55,18 @@
 	 * @param {number} [page] The page to load. If not present, simply clears the posts.
 	 * @returns {Promise<array>} The posts array.
 	 */
+	function StoreDir(fonttostore) {
+		localStorage.setItem('dir', fonttostore)
+	}
+	function GetDir() {
+		return(localStorage.getItem('dir'))
+	}
+	if(GetDir() == null) {StoreDir("up")}
+	var currentdir = GetDir()
+	var isUp = (currentdir == "up")
+	var isDown = (currentdir == "down")
 	async function loadPage(page) {
+		
 		pageLoading = true;
 
 		if (page === undefined) {
@@ -119,6 +131,8 @@
 		}
 		posts = posts;
 		pageLoading = false;
+		if(isDown) {posts = posts.reverse()}
+		if(page == 0) {scrollToBottom()}
 		return posts;
 	}
 
@@ -128,10 +142,13 @@
 	 * @param {object} post
 	 */
 	function addPost(post) {
+// 		WlodekM: idk how tf this code works so im going to reverse 2 times
+		if(isDown) {posts = posts.reverse()}
 		posts.unshift({
 			id: id++,
 			...post,
 		});
+		if(isDown) {posts = posts.reverse()}
 		posts = posts;
 	}
 
@@ -182,6 +199,9 @@
 		_ulist = val;
 	});
 	var isdev = admins.includes($user.name.toLowerCase())
+	function scrolltobottom(){
+		document.getElementById("anchor").scrollIntoView();
+	};
 </script>
 
 <div class="home">
@@ -220,6 +240,37 @@
 					", "
 				)}){/if}.
 		</Container>
+		{#if isDown}
+			<div class="center">
+				{#if pageLoading}
+					<Loading />
+				{:else if numPages && numPages > pagesLoaded}
+					<button
+						class="load-more"
+						on:click={() => loadPage(pagesLoaded + 1)}
+					>
+						Load More
+					</button>
+				{/if}
+			</div>
+			{#if posts.length < 1}
+				{#if $user.name}
+					No posts here. Check back later or be the first to post!
+				{:else}
+					No posts here. Check back later!
+				{/if}
+			{:else}
+				{#each posts as post (post.id)}
+					<div
+						transition:fly|local={{y: 50, duration: 250}}
+						animate:flip={{duration: 250}}
+					>
+						<Post {post} input={postInput} />
+					</div>
+				{/each}
+			{/if}
+			<TypingIndicator />
+		{/if}
 		<!-- I think we discussed that guest posting will not be in the official client, due to moderation reasons -->
 		{#if $user.name}
 			<form
@@ -315,35 +366,37 @@
 			</form>
 		{/if}
 		<div class="post-errors">{postErrors}</div>
-		<TypingIndicator />
-		{#if posts.length < 1}
-			{#if $user.name}
-				No posts here. Check back later or be the first to post!
+	{#if isUp}
+			<TypingIndicator />
+			{#if posts.length < 1}
+				{#if $user.name}
+					No posts here. Check back later or be the first to post!
+				{:else}
+					No posts here. Check back later!
+				{/if}
 			{:else}
-				No posts here. Check back later!
+				{#each posts as post (post.id)}
+					<div
+						transition:fly|local={{y: -50, duration: 250}}
+						animate:flip={{duration: 250}}
+					>
+						<Post {post} input={postInput} />
+					</div>
+				{/each}
 			{/if}
-		{:else}
-			{#each posts as post (post.id)}
-				<div
-					transition:fly|local={{y: -50, duration: 250}}
-					animate:flip={{duration: 250}}
-				>
-					<Post {post} input={postInput} />
-				</div>
-			{/each}
+			<div class="center">
+				{#if pageLoading}
+					<Loading />
+				{:else if numPages && numPages > pagesLoaded}
+					<button
+						class="load-more"
+						on:click={() => loadPage(pagesLoaded + 1)}
+					>
+						Load More
+					</button>
+				{/if}
+			</div>
 		{/if}
-		<div class="center">
-			{#if pageLoading}
-				<Loading />
-			{:else if numPages && numPages > pagesLoaded}
-				<button
-					class="load-more"
-					on:click={() => loadPage(pagesLoaded + 1)}
-				>
-					Load More
-				</button>
-			{/if}
-		</div>
 	{:catch error}
 		<Container>
 			<h1>F client home</h1>
@@ -351,7 +404,21 @@
 			<pre><code>{error}</code></pre>
 		</Container>
 	{/await}
+	{#if isDown}
+  		<div id="anchor" onload="scrolltobottom()"></div>
+	{/if}
 </div>
+{#if isDown}
+	<style>
+		.home * {
+		  overflow-anchor: none;
+		}
+		#anchor {
+		  overflow-anchor: auto;
+		  height: 1px;
+		}
+	</style>
+{/if}
 
 <style>
 	.createpost {
