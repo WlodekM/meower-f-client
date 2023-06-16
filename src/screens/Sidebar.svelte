@@ -27,7 +27,7 @@
 	import logout from "../assets/logout.svg";
 	import search from "../assets/search.svg";
 	import changelog from "../assets/changelog.svg";
-	import shield from "../assets/shield.svg";
+	// import shield from "../assets/shield.svg";
 	import info from "../assets/info.svg";
 
 	let popupShown = false;
@@ -119,19 +119,6 @@
 			draggable={false}
 		/>
 	</button>
-	{#if $user.lvl >= 1}
-		<button
-			on:click={() => ($modPanelOpen = !$modPanelOpen)}
-			class="modpanel-btn round"
-		>
-			<img
-				src={shield}
-				alt="Open/close moderator panel"
-				height="auto"
-				draggable={false}
-			/>
-		</button>
-	{/if}
 	<div class="padding" />
 	<button
 		class="toggle-popup round"
