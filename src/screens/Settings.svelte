@@ -21,6 +21,9 @@
 	}
 	if(GetDir() == null) {StoreDir("up")}
 	var currentdir = GetDir()
+	user.layout = "old";
+
+				clm.updateProfile();
 </script>
 
 <!--
@@ -59,7 +62,7 @@
 			class="circle settings"
 			on:click={() => {
 				const _user = $user;
-				_user.layout = _user.layout === "new" ? "old" : "new";
+				_user.layout = _user.layout === "new" ? "old" : "old";
 				user.set(_user);
 
 				clm.updateProfile();
