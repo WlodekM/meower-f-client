@@ -48,6 +48,7 @@
 
 <main
 	id="main"
+	class:layout-mobile={true}
 	class:font-undefined={localStorage.getItem('font') === undefined}
 	class:font-mono={localStorage.getItem('font') === "monospace"}
 	class:font-default={localStorage.getItem('font') === "default"}
@@ -58,8 +59,7 @@
 	class:theme-red={$user.theme === "red"}
 	class:mode-light={!($user.mode === false)}
 	class:mode-dark={$user.mode === false}
-	class:layout-old={$user.layout === "old"}
-	class:layout-mobile={$mobile}
+	class:layout-old={true}
 	class:input-touch={$touch}
 	class:input-hover={!$touch}
 >
