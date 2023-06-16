@@ -28,7 +28,7 @@
 	import search from "../assets/search.svg";
 	import changelog from "../assets/changelog.svg";
 	// import shield from "../assets/shield.svg";
-	import info from "../assets/info.svg";
+	// import info from "../assets/info.svg";
 
 	let popupShown = false;
 	let popupDebounce = false;
