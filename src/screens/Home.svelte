@@ -65,6 +65,7 @@
 	var currentdir = GetDir()
 	var isUp = (currentdir == "up")
 	var isDown = (currentdir == "down")
+	const sendsvg = "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>"
 	async function loadPage(page) {
 		
 		pageLoading = true;
@@ -362,7 +363,7 @@
 					}}
 					bind:this={postInput}
 				/>
-				<button id="submitpost">Post</button>
+				<button id="submitpost">{sendsvg}</button>
 			</form>
 		{/if}
 		<div class="post-errors">{postErrors}</div>
