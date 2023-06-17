@@ -22,9 +22,6 @@
 
 <div class="main-screen">
 	<div class="transition" />
-	<div class="sidebar">
-		<Sidebar />
-	</div>
 	<div class="view">
 		{#if $page === "home"}
 			<Home />
@@ -57,6 +54,9 @@
 			<br />
 			(Current page: {$page})
 		{/if}
+	</div>
+	<div class="sidebar">
+		<Sidebar />
 	</div>
 </div>
 
