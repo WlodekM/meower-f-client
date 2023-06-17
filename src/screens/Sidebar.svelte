@@ -320,7 +320,7 @@
 		background: var(--orange);
 		padding: 0.5em;
 		padding-top: 0.25em;
-		border-radius: 0 0 0 0.5em;
+	    border-radius: .5em 0 0 0;
 
 		position: absolute;
 		right: 0;
@@ -330,6 +330,7 @@
 		flex-direction: column;
 		align-items: stretch;
 		gap: 0.4em;
+	    bottom: 100%;
 	}
 	:global(main:not(.layout-old)) .popup {
 		right: unset;
