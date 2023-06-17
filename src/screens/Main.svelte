@@ -105,9 +105,11 @@
 	@keyframes transitionOld {
 		from {
 			height: 100%;
+			top: 0;
 		}
 		to {
 			height: 3.5em;
+			bottom: 0;
 		}
 	}
 
