@@ -416,6 +416,7 @@ function deHTML( input ) {
 		margin-block-start: 1em;
     	margin-block-end: 1em;
 	}
+
 	.pfp {
 		margin-right: 0.2em;
 		padding: 0;
@@ -423,6 +424,7 @@ function deHTML( input ) {
 		background: none !important;
 		color: inherit;
 	}
+
 	.post-header {
 		display: flex;
 		align-items: center;
@@ -432,10 +434,16 @@ function deHTML( input ) {
 
 	.creatordate {
 		margin-left: 0.5em;
+	    position: relative;
+	    top: -2.5em;
 	}
+
 	.post-text, .post-images {
-		margin-left: calc(0.5em + 75px);
+	    margin-left: calc(.5em + 67.5px);
+	    position: relative;
+	    top: -2.5em;
 	}
+
 	.creator {
 		display: flex;
 		flex-wrap: wrap;
@@ -447,6 +455,7 @@ function deHTML( input ) {
 		margin: 0;
 		overflow-wrap: anywhere;
 	}
+
 	:global(main.input-hover) .pfp:hover:not(:active) :global(.pfp),
 	:global(main.input-touch) .pfp:active :global(.pfp),
 	.pfp:focus-visible :global(.pfp) {
