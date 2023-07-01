@@ -435,7 +435,7 @@ function deHTML( input ) {
 	.creatordate {
 		margin-left: 0.5em;
 	    position: relative;
-	    top: -2.5em;
+	    top: -1em;
 	}
 
 	.post-text, .post-images {
