@@ -144,6 +144,7 @@ function deHTML( input ) {
 	        aLink.push( '<div class="video-wrapper"><iframe src="' + linkText + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
     	  }
 	      else {
+			console.log(`[DEBUG] ${linkText} : ${isVideo}`)
     	    aLink.push( '<a href="' + replace + '" target="_blank">' + linkText + '</a>' );
 	      }
     	  text = text.split( linksFound[i] ).map(item => { return aLink[i].includes('iframe') ? item.trim() : item } ).join( aLink[i] );
