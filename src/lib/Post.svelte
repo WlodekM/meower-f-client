@@ -439,7 +439,7 @@ function deHTML( input ) {
 	}
 
 	.post-text, .post-images {
-	    margin-left: calc(.5em + 67.5px);
+	    margin-left: calc(.5em + 77.5px);
 	    position: relative;
 	    top: -2.5em;
 	}
