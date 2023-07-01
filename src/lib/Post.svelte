@@ -130,8 +130,9 @@ function deHTML( input ) {
       let linkText = replace.split( '/' )[2];
       if ( linkText.substring( 0, 3 ) == 'www' ) { linkText = linkText.replace( 'www.', '' ) }
 	  var isVideo = false
+		var lnk = linksFound[i].replaceAll("]", "")
 	  VIDEO_FILE_TYPES.forEach(elem => {
-		if(linksFound[i].toLowerCase().endsWith(elem.toLowerCase())) {
+		if(lnk.toLowerCase().endsWith(elem.toLowerCase())) {
 			isVideo = true
 		}
 	  });
@@ -141,10 +142,10 @@ function deHTML( input ) {
         aLink.push( '<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' )
     	  }
 	      else if ( isVideo ) {
-	        aLink.push( '<div class="video-wrapper"><iframe src="' + linksFound[i] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
+	        aLink.push( '<div class="video-wrapper"><iframe src="' + lnk + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
     	  }
 	      else {
-			console.log(`[DEBUG] ${linkText} : ${linksFound[i]}`)
+			console.log(`[DEBUG] ${isVideo} : ${lnk}`)
     	    aLink.push( '<a href="' + replace + '" target="_blank">' + linkText + '</a>' );
 	      }
     	  text = text.split( linksFound[i] ).map(item => { return aLink[i].includes('iframe') ? item.trim() : item } ).join( aLink[i] );
