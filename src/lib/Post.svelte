@@ -159,13 +159,14 @@ function deHTML( input ) {
         aLink.push( '<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' )
     	  }
 	      else if ( isVideo ) {
+    	    aLink.push( '<a href="' + replace + '" target="_blank">' + replace + '</a>' );
 	        aLink.push( '<div class="video-wrapper"><video src="' + lnk + '" width="400" controls></video></div>' )
     	  }
 	      else if ( isImage ) {
 	        aLink.push( '<div class="video-wrapper"><video src="' + lnk + '" width="400" controls></video></div>' )
     	  }
 	      else {
-    	    aLink.push( '<a href="' + replace + '" target="_blank">' + linkText + '</a>' );
+    	    aLink.push( '<a href="' + replace + '" target="_blank">' + replace + '</a>' );
 	      }
     	  text = text.split( linksFound[i] ).map(item => { return aLink[i].includes('iframe') ? item.trim() : item } ).join( aLink[i] );
 	    }
