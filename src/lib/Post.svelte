@@ -138,7 +138,7 @@ function deHTML( input ) {
       if ( linkText.substring( 0, 3 ) == 'www' ) { linkText = linkText.replace( 'www.', '' ) }
 	  var isVideo = false
 		var lnk = linksFound[i].replaceAll("]", "")
-		if() { //if chars before link are ": "
+		if(false) { //if chars before link are ": "
 			//... get title in "title" var
 			lnk = title
 		}
