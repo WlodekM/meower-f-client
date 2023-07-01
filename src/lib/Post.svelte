@@ -140,7 +140,7 @@ function deHTML( input ) {
         let youtubeID = replace.split( '/' ).slice(-1)[0];
         aLink.push( '<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' )
     	  }
-	      else if ( .some(o => linkText.toLowerCase().endsWith(o.toLowerCase())) ) {
+	      else if ( isVideo ) {
 	        aLink.push( '<div class="video-wrapper"><iframe src="' + linkText + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
     	  }
 	      else {
