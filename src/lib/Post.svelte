@@ -131,7 +131,7 @@ function deHTML( input ) {
       if ( linkText.substring( 0, 3 ) == 'www' ) { linkText = linkText.replace( 'www.', '' ) }
 	  var isVideo = false
 	  VIDEO_FILE_TYPES.foreach(elem => {
-		if(linkText.toLowerCase().endsWith(elem.toLowerCase()))) {
+		if(linkText.toLowerCase().endsWith(elem.toLowerCase())) {
 			isVideo = true
 		}
 	  });
