@@ -78,6 +78,13 @@
 		".mov",
 		".wvm",
 	]
+	const IMG_FILE_TYPES = [
+		".png",
+		".jpeg",
+		".webp",
+		".jpg",
+		".svg",
+	]
 
 	// TODO: make bridged tag a setting
 
@@ -131,9 +138,19 @@ function deHTML( input ) {
       if ( linkText.substring( 0, 3 ) == 'www' ) { linkText = linkText.replace( 'www.', '' ) }
 	  var isVideo = false
 		var lnk = linksFound[i].replaceAll("]", "")
+		if() { //if chars before link are ": "
+			//... get title in "title" var
+			lnk = title
+		}
 	  VIDEO_FILE_TYPES.forEach(elem => {
 		if(lnk.toLowerCase().endsWith(elem.toLowerCase())) {
 			isVideo = true
+		}
+	  });
+	  var isImage = false
+	  IMG_FILE_TYPES.forEach(elem => {
+		if(lnk.toLowerCase().endsWith(elem.toLowerCase())) {
+			isImage = true
 		}
 	  });
       if ( linkText.match( /youtu/ ) ) {
@@ -144,8 +161,10 @@ function deHTML( input ) {
 	      else if ( isVideo ) {
 	        aLink.push( '<div class="video-wrapper"><video src="' + lnk + '" width="400" controls></video></div>' )
     	  }
+	      else if ( isImage ) {
+	        aLink.push( '<div class="video-wrapper"><video src="' + lnk + '" width="400" controls></video></div>' )
+    	  }
 	      else {
-			console.log(`[DEBUG] ${isVideo} : ${lnk}`)
     	    aLink.push( '<a href="' + replace + '" target="_blank">' + linkText + '</a>' );
 	      }
     	  text = text.split( linksFound[i] ).map(item => { return aLink[i].includes('iframe') ? item.trim() : item } ).join( aLink[i] );
@@ -399,7 +418,7 @@ function deHTML( input ) {
 		<p class="post-content">{@html format(convertLinks(deHTML(post.content)))}</p> 
 	</div>
 	<div class="post-images">
-		{#each images as { title, url }}
+		<!--{#each images as { title, url }}
 			<a href={url} target="_blank"
 				><img
 					src={url}
@@ -408,7 +427,7 @@ function deHTML( input ) {
 					class="post-image"
 				/></a
 			>
-		{/each}
+		{/each} -->
 </Container>
 
 <style>
