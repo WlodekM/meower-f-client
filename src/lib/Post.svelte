@@ -129,12 +129,18 @@ function deHTML( input ) {
       if ( !( linksFound[i].match( /(http(s?)):\/\// ) ) ) { replace = 'http://' + linksFound[i] }
       let linkText = replace.split( '/' )[2];
       if ( linkText.substring( 0, 3 ) == 'www' ) { linkText = linkText.replace( 'www.', '' ) }
+	  var isVideo = false
+	  VIDEO_FILE_TYPES.foreach(elem => {
+		if(linkText.toLowerCase().endsWith(elem.toLowerCase()))) {
+			isVideo = true
+		}
+	  });
       if ( linkText.match( /youtu/ ) ) {
 
         let youtubeID = replace.split( '/' ).slice(-1)[0];
         aLink.push( '<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' )
     	  }
-	      else if ( VIDEO_FILE_TYPES.some(o => linkText.toLowerCase().endsWith(o.toLowerCase())) ) {
+	      else if ( .some(o => linkText.toLowerCase().endsWith(o.toLowerCase())) ) {
 	        aLink.push( '<div class="video-wrapper"><iframe src="' + linkText + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
     	  }
 	      else {
