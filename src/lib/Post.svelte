@@ -159,8 +159,7 @@ function deHTML( input ) {
         aLink.push( '<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' )
     	  }
 	      else if ( isVideo ) {
-    	    aLink.push( '<a href="' + replace + '" target="_blank">' + replace + '</a>' );
-	        aLink.push( '<div class="video-wrapper"><video src="' + lnk + '" width="400" controls></video></div>' )
+    	    aLink.push( '<a href="' + replace + '" target="_blank">' + replace + '</a>' + "\n" + '<div class="video-wrapper"><video src="' + lnk + '" width="400" controls></video></div>' )
     	  }
 	      else if ( isImage ) {
 	        aLink.push( '<div class="video-wrapper"><video src="' + lnk + '" width="400" controls></video></div>' )
