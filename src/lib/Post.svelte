@@ -71,6 +71,13 @@
 		"https://cdn.discordapp.com/",
 		"https://media.discordapp.net/",
 	];
+	VIDEO_FILE_TYPES = [
+		".mp4",
+		".webm",
+		".avi",
+		".mov",
+		".wvm",
+	]
 
 	// TODO: make bridged tag a setting
 
@@ -127,9 +134,8 @@ function deHTML( input ) {
         let youtubeID = replace.split( '/' ).slice(-1)[0];
         aLink.push( '<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' )
     	  }
-	      else if ( linkText.match( /vimeo/ ) ) {
-    	    let vimeoID = replace.split( '/' ).slice(-1)[0];
-	        aLink.push( '<div class="video-wrapper"><iframe src="https://player.vimeo.com/video/' + vimeoID + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
+	      else if ( VIDEO_FILE_TYPES.some(o => linkText.toLowerCase().endsWith(o.toLowerCase())) ) {
+	        aLink.push( '<div class="video-wrapper"><iframe src="' + linkText + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' )
     	  }
 	      else {
     	    aLink.push( '<a href="' + replace + '" target="_blank">' + linkText + '</a>' );
