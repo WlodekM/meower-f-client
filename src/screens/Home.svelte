@@ -239,6 +239,7 @@
 			There are currently {_ulist.length} user(s) online{#if _ulist.length}{" "}({_ulist.join(
 					", "
 				)}){/if}.
+			You are using the old meower F client, which will not be updated, switch to <a href="https://new-meower-f-client.vercel.app/">the new one</a> now!
 		</Container>
 		{#if isDown}
 			<div class="center">
